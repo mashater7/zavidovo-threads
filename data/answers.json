@@ -1,16 +1,6 @@
 {
-  "updated": "2026-10-21T11:57:39.524Z",
+  "updated": "2026-10-21T12:08:04.104Z",
   "entries": [
-    {
-      "id": "2026-10-21-04",
-      "kind": "request",
-      "post_url": "https://www.threads.com/@evkrvc/post/DewMw0mF5bm",
-      "author": "@evkrvc",
-      "post_text": "Тбилиси, посоветуйте грумера для кошек с выездом на дом или хорошую клинику в Сабуртало, где делают груминг кошек\nБуду благодарна за контакты и рекомендации!\n3\n3",
-      "post_date": "2026-10-21",
-      "reply_text": "Сдаём домики в Завидово: есть с чаном, есть с баней",
-      "photos": 9
-    },
     {
       "id": "2026-10-21-09",
       "kind": "self_promo",
@@ -130,6 +120,23 @@
       "post_date": "2026-10-20",
       "reply_text": "Мы сдаём домики в Завидово, с чаном и баней",
       "photos": 9
+    }
+  ],
+  "sent": [
+    {
+      "id": "2026-10-21-07",
+      "author": "@v_juuu",
+      "post_url": "https://www.threads.com/@v_juuu/post/DewTnMEDNhT",
+      "reply_url": "https://www.threads.com/@zavidovobarn/post/DewWa3GCO08",
+      "reply_text": "У меня домики в Завидово с чаном и баней)",
+      "sent_at": "2026-10-21T11:56:55.219Z",
+      "stats": {
+        "views": 4,
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0,
+        "checked_at": "2026-10-21T12:08:01.187Z"
+      }
     }
   ]
 }
