@@ -233,14 +233,26 @@ function renderPair(p) {
 }
 
 async function send(p, text, replyUrl, btn, verdict, refresh, photos = 0) {
-  // «ОК» открывает GitHub с готовой заявкой. Кнопка «Create» там — подтверждение, что это ты:
-  // сервер выполняет только заявки от владельца репозитория.
   const payload = { id: p.id, text, reply_url: replyUrl, photos };
+  // На своём компьютере «ОК» уходит прямо в пульт (127.0.0.1 недоступен никому, кроме этого компьютера)
+  btn.disabled = true; verdict.className = 'verdict'; verdict.textContent = 'Отправляю через Chrome, это до минуты…';
+  try {
+    const r = await fetch('http://127.0.0.1:8777/api/ok', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const j = await r.json();
+    const msg = j.message || j.error || 'Пульт не ответил';
+    const sent = /^Опубликовано/.test(msg);
+    if (sent) log.unshift({ id: p.id, text, replyUrl, ok: true, at: new Date().toISOString() });
+    verdict.className = 'verdict ' + (sent ? 'yes' : 'no'); verdict.textContent = msg;
+    btn.disabled = sent; renderLog();
+    document.querySelectorAll('.pair').forEach(b => b.refresh && b.refresh());
+    return;
+  } catch { /* пульта нет (телефон) — подтверждаем через GitHub */ }
+  // С телефона: «ОК» открывает GitHub с готовой заявкой, «Create» там — подтверждение, что это ты.
   const body = 'Нажми зелёную кнопку «Create» внизу — ответ уйдёт в Threads.\n\n```json\n' + JSON.stringify(payload, null, 2) + '\n```';
   const url = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent('ОК: ' + p.id)}&body=${encodeURIComponent(body)}`;
-  window.open(url, '_blank', 'noopener');
-  btn.disabled = true; verdict.className = 'verdict';
-  verdict.textContent = 'Открыла GitHub — нажми там «Create». Компьютер опубликует за 1–2 минуты (он должен быть включён), результат появится здесь сам.';
+  verdict.textContent = 'С телефона ответ подтверждается на GitHub: ';
+  const go = el('a', null, 'открыть и нажать «Create»'); go.href = url; go.target = '_blank'; go.rel = 'noopener';
+  verdict.append(go, '. Компьютер опубликует за 1–2 минуты (он должен быть включён).');
   const before = log.length;
   for (let i = 0; i < 30; i++) {
     await new Promise(res => setTimeout(res, 15000));
