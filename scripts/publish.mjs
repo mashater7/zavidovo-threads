@@ -4,9 +4,12 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { check, shortcodeFromUrl, mediaIdFromShortcode, waitText } from './rules.js';
 
 const API = 'https://graph.threads.net/v1.0';
+const SITE = 'https://mashater7.github.io/zavidovo-threads';
 const token = process.env.THREADS_TOKEN;
 const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
-const p = event.client_payload || event.inputs || {};
+// Заявка приходит из issue «ОК: …» (JSON в теле) — так GitHub сам подтверждает, что нажала владелица
+const fromIssue = event.issue && /```json\s*([\s\S]*?)```/.exec(event.issue.body || '');
+const p = fromIssue ? JSON.parse(fromIssue[1]) : (event.client_payload || event.inputs || {});
 const read = f => JSON.parse(readFileSync(f, 'utf8'));
 const rules = read('data/rules.json');
 const log = read('data/log.json');
@@ -15,7 +18,9 @@ const docs = read('data/docs-status.json');
 function finish(entry) {
   log.unshift({ id: p.id, text: p.text, replyUrl: p.reply_url, at: new Date().toISOString(), ...entry });
   writeFileSync('data/log.json', JSON.stringify(log, null, 2) + '\n');
-  console.log(entry.ok ? 'Опубликовано' : 'Отказ: ' + entry.reason);
+  const msg = entry.ok ? 'Опубликовано в Threads ✅' : 'Отказ: ' + entry.reason;
+  writeFileSync('result.txt', msg + '\n');
+  console.log(msg);
 }
 
 async function api(path, params, method = 'GET') {
@@ -40,10 +45,23 @@ if (!verdict.ok) {
       finish({ ok: false, reason: `Threads: лимит ответов на сутки исчерпан (${d.reply_quota_usage}/${total}). Подожди до завтра.` });
     } else {
       const replyTo = mediaIdFromShortcode(shortcodeFromUrl(p.reply_url));
-      const c = await api('/me/threads', { media_type: 'TEXT', text: p.text.trim(), reply_to_id: replyTo }, 'POST');
+      const photos = Math.min(Number(p.photos) || 0, 20);
+      let c;
+      if (photos >= 2) {
+        // Ответ-карусель: фото берём с нашего же сайта на GitHub Pages
+        const children = [];
+        for (let i = 1; i <= photos; i++) {
+          const img = await api('/me/threads', { media_type: 'IMAGE', is_carousel_item: 'true', image_url: `${SITE}/photos/${String(i).padStart(2, '0')}.jpg` }, 'POST');
+          children.push(img.id);
+        }
+        await new Promise(r => setTimeout(r, 10000));
+        c = await api('/me/threads', { media_type: 'CAROUSEL', children: children.join(','), text: p.text.trim(), reply_to_id: replyTo }, 'POST');
+      } else {
+        c = await api('/me/threads', { media_type: 'TEXT', text: p.text.trim(), reply_to_id: replyTo }, 'POST');
+      }
       await new Promise(r => setTimeout(r, 15000)); // Threads советует дать контейнеру обработаться
       const pub = await api('/me/threads_publish', { creation_id: c.id }, 'POST');
-      finish({ ok: true, postId: pub.id });
+      finish({ ok: true, postId: pub.id, photos });
     }
   } catch (e) {
     finish({ ok: false, reason: 'Threads ответил ошибкой: ' + e.message });

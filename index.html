@@ -50,6 +50,9 @@
   .tab[aria-pressed="true"] { font-weight: 700; background: linear-gradient(transparent 62%, rgba(240,149,42,.45) 62%, rgba(240,149,42,.45) 92%, transparent 92%); }
   button:focus-visible, a:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px solid var(--fire); outline-offset: 2px; }
 
+  .photos { display: flex; gap: 4px; overflow-x: auto; margin: 6px 0 0; }
+  .photos img { width: 56px; height: 56px; object-fit: cover; border-radius: 3px; flex: none; }
+  .skip { font: inherit; font-size: 14px; color: var(--muted); background: none; border: 0; text-decoration: underline; cursor: pointer; min-height: 44px; padding: 0 4px; }
   .pair { padding: 16px 0 20px; border-bottom: 1px solid var(--rule); }
   .pair-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
   .pair-head h3 { font: 700 26px/1 "Caveat", cursive; color: var(--pen); margin: 0; }
@@ -106,16 +109,21 @@
 <body>
 <main class="sheet">
   <h1>Посты для Threads</h1>
-  <p class="sub">Негатив — идея для твоего личного аккаунта, постишь сама. Позитив — ответ от @zavidovobarn, уходит по кнопке «ОК».</p>
+  <p class="sub">«Ответы» — найденные посты, где ищут дом или рекламируются: ответ с фото уходит по «ОК». «Посты» — негатив постишь сама, позитив уходит по «ОК».</p>
   <p class="note err" id="docs-note" hidden></p>
 
   <nav class="tabs" aria-label="Разделы">
-    <button class="tab" data-tab="posts" aria-pressed="true">Посты <span id="n-posts"></span></button>
+    <button class="tab" data-tab="answers" aria-pressed="true">Ответы <span id="n-answers"></span></button>
+    <button class="tab" data-tab="posts" aria-pressed="false">Посты <span id="n-posts"></span></button>
     <button class="tab" data-tab="neg" aria-pressed="false">Негатив <span id="n-neg"></span></button>
     <button class="tab" data-tab="log" aria-pressed="false">Журнал <span id="n-log"></span></button>
   </nav>
 
-  <section id="posts"></section>
+  <section id="answers">
+    <p class="sub" id="answers-sub"></p>
+  </section>
+
+  <section id="posts" hidden></section>
 
   <section id="neg" hidden>
     <h2>На что жалуются гости</h2>
@@ -132,15 +140,6 @@
     </table>
   </section>
 
-  <details class="settings">
-    <summary>Ключ GitHub для кнопки «ОК»</summary>
-    <p>Вставляется один раз на каждом телефоне или компьютере и хранится только в этом браузере.</p>
-    <div class="row">
-      <input type="password" id="gh-token" placeholder="github_pat_…" autocomplete="off">
-      <button class="ok-btn" id="gh-save" type="button">Сохранить</button>
-    </div>
-    <p id="gh-state"></p>
-  </details>
 </main>
 
 <script type="module">
@@ -162,10 +161,8 @@ let rules, docs, log = [], topics;
 
 async function freshLog() {
   // Журнал читаем через API GitHub: так он свежий сразу после публикации, без кэша Pages
-  const token = store.get('gh');
-  if (!token) return json('data/log.json');
   const r = await fetch(`https://api.github.com/repos/${REPO}/contents/data/log.json`, {
-    headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' });
+    headers: { Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' });
   return r.ok ? r.json() : json('data/log.json');
 }
 
@@ -235,18 +232,22 @@ function renderPair(p) {
   return box;
 }
 
-async function send(p, text, replyUrl, btn, verdict, refresh) {
-  const token = store.get('gh');
-  if (!token) { verdict.className = 'verdict no'; verdict.textContent = 'Сначала вставь ключ GitHub внизу страницы.'; return; }
-  btn.disabled = true; verdict.className = 'verdict'; verdict.textContent = 'Отправляю на сервер…';
-  const r = await fetch(`https://api.github.com/repos/${REPO}/dispatches`, {
-    method: 'POST', headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' },
-    body: JSON.stringify({ event_type: 'publish', client_payload: { id: p.id, text, reply_url: replyUrl } }) });
-  if (!r.ok) { verdict.className = 'verdict no'; verdict.textContent = 'GitHub не принял запрос (' + r.status + '). Проверь ключ.'; btn.disabled = false; return; }
-  verdict.textContent = 'Сервер проверяет правила и публикует, это около минуты…';
+async function send(p, text, replyUrl, btn, verdict, refresh, photos = 0) {
+  // «ОК» открывает GitHub с готовой заявкой. Кнопка «Create» там — подтверждение, что это ты:
+  // сервер выполняет только заявки от владельца репозитория.
+  const payload = { id: p.id, text, reply_url: replyUrl, photos };
+  const body = 'Нажми зелёную кнопку «Create» внизу — ответ уйдёт в Threads.
+
+```json
+' + JSON.stringify(payload, null, 2) + '
+```';
+  const url = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent('ОК: ' + p.id)}&body=${encodeURIComponent(body)}`;
+  window.open(url, '_blank', 'noopener');
+  btn.disabled = true; verdict.className = 'verdict';
+  verdict.textContent = 'Открыла GitHub — нажми там «Create». Потом вернись сюда: результат появится сам, это около минуты.';
   const before = log.length;
-  for (let i = 0; i < 24; i++) {
-    await new Promise(res => setTimeout(res, 10000));
+  for (let i = 0; i < 30; i++) {
+    await new Promise(res => setTimeout(res, 15000));
     const fresh = await freshLog().catch(() => log);
     if (fresh.length > before) {
       log = fresh; renderLog();
@@ -257,8 +258,55 @@ async function send(p, text, replyUrl, btn, verdict, refresh) {
       return;
     }
   }
-  verdict.textContent = 'Сервер долго не отвечает. Загляни в «Журнал» через пару минут.';
+  verdict.textContent = 'Ответа от сервера пока нет. Если нажала «Create» — загляни в «Журнал» через пару минут.'; btn.disabled = false;
 }
+
+function renderAnswer(e) {
+  const box = el('article', 'pair');
+  const head = el('div', 'pair-head');
+  head.append(el('h3', null, e.author));
+  head.append(el('span', null, (e.kind === 'self_promo' ? 'ветка саморекламы · ' : 'ищут дом · ') + (e.post_date || '')));
+  box.append(head);
+  box.append(el('p', 'neg', e.post_text));
+  const open = el('a', 'copy', 'Открыть пост'); open.href = e.post_url; open.target = '_blank'; open.rel = 'noopener';
+  box.append(open);
+
+  const lbl = el('label', 'label', 'Ответ от @zavidovobarn'); lbl.htmlFor = 'ans-' + e.id;
+  const ta = el('textarea'); ta.id = 'ans-' + e.id; ta.value = store.get('ans-' + e.id) || e.reply_text;
+  const cnt = el('div', 'count');
+  box.append(lbl, ta, cnt);
+  if (e.photos) {
+    const ph = el('div', 'photos');
+    for (let i = 1; i <= e.photos; i++) { const img = el('img'); img.src = 'photos/' + String(i).padStart(2, '0') + '.jpg'; img.alt = 'Фото ' + i; img.loading = 'lazy'; img.width = 56; img.height = 56; ph.append(img); }
+    box.append(ph);
+  }
+  const row = el('div', 'row');
+  const ok = el('button', 'ok-btn', e.photos ? `ОК — ответить с ${e.photos} фото` : 'ОК'); ok.type = 'button';
+  const skip = el('button', 'skip', 'Пропустить'); skip.type = 'button';
+  row.append(ok, skip);
+  const verdict = el('p', 'verdict'); verdict.setAttribute('aria-live', 'polite');
+  box.append(row, verdict);
+
+  function refresh() {
+    ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 2 + 'px';
+    store.set('ans-' + e.id, ta.value);
+    const n = ta.value.trim().length;
+    cnt.textContent = n + ' / ' + rules.api.maxTextLength; cnt.className = 'count' + (n > rules.api.maxTextLength ? ' over' : '');
+    const done = log.find(x => x.ok && x.id === e.id);
+    if (done) { verdict.className = 'verdict yes'; verdict.textContent = 'Отвечено ' + new Date(done.at).toLocaleString('ru-RU'); ok.disabled = true; skip.hidden = true; return; }
+    const v = check({ text: ta.value, replyUrl: e.post_url, rules, log, docs });
+    verdict.className = 'verdict' + (v.ok ? '' : ' no');
+    verdict.textContent = v.ok ? 'Правила и частота в порядке — можно отправлять.' : v.reason + ' ' + waitText(v.waitMinutes);
+    ok.disabled = !v.ok;
+  }
+  ta.oninput = refresh;
+  ok.onclick = () => send(e, ta.value.trim(), e.post_url, ok, verdict, refresh, e.photos);
+  skip.onclick = () => { store.set('skip-' + e.id, '1'); box.remove(); countAnswers(); };
+  box.refresh = refresh;
+  return box;
+}
+
+function countAnswers() { $('n-answers').textContent = document.querySelectorAll('#answers .pair').length || ''; }
 
 function renderTopics() {
   $('n-neg').textContent = topics.total.toLocaleString('ru-RU');
@@ -278,20 +326,16 @@ function renderTopics() {
 function initTabs() {
   document.querySelectorAll('.tab').forEach(b => b.onclick = () => {
     document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-    for (const id of ['posts', 'neg', 'log']) $(id).hidden = id !== b.dataset.tab;
+    for (const id of ['answers', 'posts', 'neg', 'log']) $(id).hidden = id !== b.dataset.tab;
     store.set('tab', b.dataset.tab);
   });
   const saved = store.get('tab'); if (saved) { const b = document.querySelector(`.tab[data-tab="${saved}"]`); if (b) b.click(); }
 }
 
-function initToken() {
-  const show = () => $('gh-state').textContent = store.get('gh') ? 'Ключ сохранён в этом браузере.' : 'Ключа нет — кнопка «ОК» не сработает.';
-  $('gh-save').onclick = () => { store.set('gh', $('gh-token').value.trim()); $('gh-token').value = ''; show(); };
-  show();
-}
 
-const [pairs] = await Promise.all([
+const [pairs, answers] = await Promise.all([
   json('data/pairs.json'),
+  json('data/answers.json').catch(() => ({ entries: [] })),
   json('data/rules.json').then(x => rules = x),
   json('data/docs-status.json').then(x => docs = x),
   json('data/topics.json').then(x => topics = x),
@@ -301,7 +345,13 @@ if (docs.changed) { const n = $('docs-note'); n.hidden = false; n.textContent = 
 $('n-posts').textContent = pairs.length;
 const weight = p => p.topic === 'другое' ? -1 : (topics.topics.find(t => t.key === p.topic) || { count: 0 }).count;
 pairs.sort((a, b) => weight(b) - weight(a)).forEach(p => { const box = renderPair(p); $('posts').append(box); box.refresh(); });
-renderTopics(); renderLog(); initTabs(); initToken();
+const fresh = answers.entries.filter(e => !store.get('skip-' + e.id));
+fresh.forEach(e => { const box = renderAnswer(e); $('answers').append(box); box.refresh(); });
+$('answers-sub').textContent = fresh.length
+  ? `Найдено постов: ${fresh.length}. Поиск обновлён ${new Date(answers.updated).toLocaleString('ru-RU')}.`
+  : 'Новых постов пока нет. Поиск идёт сам каждый день в 10:00 (компьютер должен быть включён).';
+countAnswers();
+renderTopics(); renderLog(); initTabs();
 </script>
 </body>
 </html>

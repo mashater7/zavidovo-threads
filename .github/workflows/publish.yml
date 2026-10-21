@@ -1,14 +1,19 @@
 name: Публикация ответа
 on:
+  issues:
+    types: [opened]
   repository_dispatch:
     types: [publish]
 permissions:
   contents: write
+  issues: write
 concurrency:
   group: publish
   cancel-in-progress: false
 jobs:
   publish:
+    # Только заявки владельца репозитория: чужие «ОК» игнорируются
+    if: github.event_name == 'repository_dispatch' || (github.event.issue.user.login == github.repository_owner && startsWith(github.event.issue.title, 'ОК:'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,5 +28,12 @@ jobs:
           git config user.name "zavidovo-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/log.json
-          git commit -m "Журнал: ${{ github.event.client_payload.id }}" || exit 0
+          git commit -m "Журнал" || exit 0
           git pull --rebase && git push
+      - name: Ответить в заявке и закрыть
+        if: always() && github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --repo "$GITHUB_REPOSITORY" --body-file result.txt || gh issue comment ${{ github.event.issue.number }} --repo "$GITHUB_REPOSITORY" --body "Сервер упал, подробности во вкладке Actions"
+          gh issue close ${{ github.event.issue.number }} --repo "$GITHUB_REPOSITORY"

@@ -1,3 +1,4 @@
 node_modules/
 *.jsonl
 Опубликовать.bat
+result.txt
