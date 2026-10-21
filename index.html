@@ -92,8 +92,12 @@
   .st-ok { color: var(--pen); font-weight: 700; }
   .st-no { color: var(--red-pen); }
 
-  .group-title { margin: 28px 0 2px; }
-  .group-n { font: 700 18px/1 "PT Sans", sans-serif; color: var(--muted); }
+  .switch { display: inline-flex; border: 1.5px solid var(--pen); border-radius: 6px; overflow: hidden; margin: 18px 0 6px; max-width: 100%; }
+  .switch-btn { font: 700 15px/1 "PT Sans", sans-serif; color: var(--pen); background: #fff; border: 0; padding: 0 16px; min-height: 44px; cursor: pointer; }
+  .switch-btn + .switch-btn { border-left: 1.5px solid var(--pen); }
+  .switch-btn[aria-pressed="true"] { background: var(--pen); color: #fff; }
+  .switch-btn[aria-pressed="true"] .group-n { color: rgba(255,255,255,.8); }
+  .group-n { font-weight: 400; color: var(--muted); }
   .toolbar { justify-content: space-between; margin: 0 0 8px; }
   .toolbar .sub, .toolbar h2 { margin: 0; }
   .table-wrap { overflow-x: auto; }
@@ -351,7 +355,7 @@ function renderAnswer(e) {
   return box;
 }
 
-function countAnswers() { $('n-answers').textContent = document.querySelectorAll('#answers .pair').length || ''; }
+function countAnswers() { $('n-answers').textContent = answers.entries.filter(e => !store.get('skip-' + e.id)).length || ''; }
 
 function renderAnswers() {
   const list = $('answers-list'); list.textContent = '';
@@ -360,11 +364,19 @@ function renderAnswers() {
     ['request', 'Целевые запросы', 'ищут дом, баню, куда поехать за город'],
     ['self_promo', 'Самореклама', 'ветки, где можно рассказать о себе'],
   ];
+  // Переключатель: показываем одну группу, выбор запоминаем
+  const current = store.get('group') || 'request';
+  const sw = el('div', 'switch'); sw.setAttribute('role', 'group'); sw.setAttribute('aria-label', 'Какие посты показать');
+  list.append(sw);
   for (const [kind, title, hint] of groups) {
     const items = fresh.filter(e => (e.kind === 'self_promo') === (kind === 'self_promo'));
-    const h = el('h2', 'group-title', title + ' ');
-    h.append(el('span', 'group-n', String(items.length)));
-    list.append(h, el('p', 'sub', items.length ? hint : hint + ' — пока ничего нового'));
+    const b = el('button', 'switch-btn', title + ' '); b.type = 'button';
+    b.append(el('span', 'group-n', String(items.length)));
+    b.setAttribute('aria-pressed', String(kind === current));
+    b.onclick = () => { store.set('group', kind); renderAnswers(); };
+    sw.append(b);
+    if (kind !== current) continue;
+    list.append(el('p', 'sub', items.length ? hint : hint + ' — пока ничего нового. Нажми «Обновить поиск».'));
     items.forEach(e => { const box = renderAnswer(e); list.append(box); box.refresh(); });
   }
   $('answers-sub').textContent = fresh.length
