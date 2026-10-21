@@ -289,7 +289,7 @@ async function send(p, text, replyUrl, btn, verdict, refresh, photos = 0) {
     ? { id: p.id, text, reply_url: replyUrl, photos: photos.length, photos_list: photos.slice() }
     : { id: p.id, text, reply_url: replyUrl, photos };
   // На своём компьютере «ОК» уходит прямо в пульт (127.0.0.1 недоступен никому, кроме этого компьютера)
-  btn.disabled = true; verdict.className = 'verdict'; verdict.textContent = 'Отправляю через Chrome, это до минуты…';
+  btn.disabled = true; verdict.className = 'verdict'; verdict.textContent = 'Отправляю в Threads, это до минуты…';
   try {
     const r = await fetch('http://127.0.0.1:8777/api/ok', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const j = await r.json();
