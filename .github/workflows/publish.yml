@@ -1,0 +1,27 @@
+name: Публикация ответа
+on:
+  repository_dispatch:
+    types: [publish]
+permissions:
+  contents: write
+concurrency:
+  group: publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/publish.mjs
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+      - name: Записать журнал
+        run: |
+          git config user.name "zavidovo-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/log.json
+          git commit -m "Журнал: ${{ github.event.client_payload.id }}" || exit 0
+          git pull --rebase && git push

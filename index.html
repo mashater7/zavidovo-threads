@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Посты Threads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FFFEF8;
+    --grid: rgba(120, 160, 210, .18);
+    --rule: #C7D6EA;
+    --margin: #E9A3A3;
+    --ink: #24324A;
+    --pen: #2B4F9E;
+    --red-pen: #C23B3B;
+    --muted: #6E7787;
+    --fire: #F0952A;
+    --cell: 22px;
+  }
+  * { box-sizing: border-box; }
+  button, a, input, textarea { touch-action: manipulation; }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font: 15px/1.45 "PT Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    min-height: 100vh;
+  }
+  .sheet { position: relative; max-width: 980px; margin: 0 auto; padding: 28px 24px 64px 72px; }
+  .sheet::before { content: ""; position: absolute; top: 0; bottom: 0; left: 52px; width: 1.5px; background: var(--margin); }
+  h1 { font: 700 44px/1 "Caveat", cursive; color: var(--pen); margin: 0 0 4px; }
+  h2 { font: 700 30px/1.1 "Caveat", cursive; color: var(--pen); margin: 0 0 10px; }
+  .sub { color: var(--muted); margin: 0 0 18px; }
+  .note { display: inline-block; background: #FFF1DC; padding: 4px 10px; margin: 0 0 18px; transform: rotate(-.4deg); }
+  .note.err { background: #FBE3E3; color: var(--red-pen); }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-bottom: 18px; }
+  .tab { font: inherit; color: var(--ink); background: none; border: 0; padding: 8px 2px; cursor: pointer; min-height: 44px; }
+  .tab span { color: var(--muted); }
+  .tab[aria-pressed="true"] { font-weight: 700; background: linear-gradient(transparent 62%, rgba(240,149,42,.45) 62%, rgba(240,149,42,.45) 92%, transparent 92%); }
+  button:focus-visible, a:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px solid var(--fire); outline-offset: 2px; }
+
+  .pair { padding: 16px 0 20px; border-bottom: 1px solid var(--rule); }
+  .pair-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .pair-head h3 { font: 700 26px/1 "Caveat", cursive; color: var(--pen); margin: 0; }
+  .pair-head span { color: var(--muted); font-size: 13px; }
+  .label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 10px 0 4px; }
+  .neg { margin: 0; color: var(--ink); }
+  .copy { font: inherit; font-size: 14px; color: var(--pen); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; min-height: 44px; }
+  textarea, input[type=url], input[type=password] {
+    width: 100%; font: 16px/1.4 "PT Sans", system-ui, sans-serif; color: var(--pen);
+    background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 8px 10px;
+  }
+  textarea { resize: vertical; min-height: 84px; }
+  .count { font-size: 12px; color: var(--muted); text-align: right; margin-top: 2px; }
+  .count.over { color: var(--red-pen); font-weight: 700; }
+  .check { margin: 8px 0 0; padding: 6px 10px; background: #FFF1DC; font-size: 14px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+  .row input { flex: 1 1 260px; }
+  .ok-btn {
+    font: 700 16px/1 "PT Sans", sans-serif; color: #fff; background: var(--pen);
+    border: 0; border-radius: 4px; padding: 0 22px; min-height: 44px; cursor: pointer;
+  }
+  .ok-btn:disabled { background: #9AA6BC; cursor: not-allowed; }
+  .verdict { margin: 8px 0 0; font-size: 14px; }
+  .verdict.no { color: var(--red-pen); }
+  .verdict.yes { color: var(--pen); font-weight: 700; }
+
+  .topic { display: grid; grid-template-columns: minmax(150px, 220px) 1fr 56px; gap: 10px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+  .topic .bar { height: 12px; background: rgba(240,149,42,.55); border-radius: 2px; }
+  .topic .n { text-align: right; font-variant-numeric: tabular-nums; color: var(--pen); font-weight: 700; }
+  .srcs { display: flex; flex-wrap: wrap; gap: 4px 22px; margin: 0 0 16px; padding: 0; list-style: none; color: var(--muted); }
+  .srcs b { color: var(--pen); }
+
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 8px; border-bottom: 1px solid var(--rule); }
+  th { font-size: 13px; color: var(--pen); border-bottom: 2px solid var(--pen); }
+  td.when { white-space: nowrap; color: var(--muted); width: 1%; }
+  .st-ok { color: var(--pen); font-weight: 700; }
+  .st-no { color: var(--red-pen); }
+
+  details.settings { margin-top: 36px; color: var(--muted); }
+  details.settings summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+  details.settings p { margin: 6px 0; font-size: 14px; }
+
+  @media (max-width: 640px) {
+    .sheet { padding: 20px 16px 48px 40px; }
+    .sheet::before { left: 26px; }
+    h1 { font-size: 36px; }
+    .topic { grid-template-columns: 1fr 48px; }
+    .topic .bar { grid-column: 1 / -1; grid-row: 2; }
+    .ok-btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <h1>Посты для Threads</h1>
+  <p class="sub">Негатив — идея для твоего личного аккаунта, постишь сама. Позитив — ответ от @zavidovobarn, уходит по кнопке «ОК».</p>
+  <p class="note err" id="docs-note" hidden></p>
+
+  <nav class="tabs" aria-label="Разделы">
+    <button class="tab" data-tab="posts" aria-pressed="true">Посты <span id="n-posts"></span></button>
+    <button class="tab" data-tab="neg" aria-pressed="false">Негатив <span id="n-neg"></span></button>
+    <button class="tab" data-tab="log" aria-pressed="false">Журнал <span id="n-log"></span></button>
+  </nav>
+
+  <section id="posts"></section>
+
+  <section id="neg" hidden>
+    <h2>На что жалуются гости</h2>
+    <p class="sub" id="neg-sub"></p>
+    <ul class="srcs" id="srcs"></ul>
+    <div id="topics"></div>
+  </section>
+
+  <section id="log" hidden>
+    <h2>Журнал ответов</h2>
+    <table>
+      <thead><tr><th>Когда</th><th>Что</th><th>Итог</th></tr></thead>
+      <tbody id="log-rows"></tbody>
+    </table>
+  </section>
+
+  <details class="settings">
+    <summary>Ключ GitHub для кнопки «ОК»</summary>
+    <p>Вставляется один раз на каждом телефоне или компьютере и хранится только в этом браузере.</p>
+    <div class="row">
+      <input type="password" id="gh-token" placeholder="github_pat_…" autocomplete="off">
+      <button class="ok-btn" id="gh-save" type="button">Сохранить</button>
+    </div>
+    <p id="gh-state"></p>
+  </details>
+</main>
+
+<script type="module">
+import { check, waitText } from './scripts/rules.js';
+
+const REPO = 'mashater7/zavidovo-threads';
+const SRC = { yandex_travel: 'Яндекс Путешествия', yandex_maps: 'Яндекс Карты', '2gis': '2ГИС', otello: 'Otello',
+  cian: 'Циан', sutochno: 'Суточно.ру', tvil: 'Твил', avito: 'Авито', otzovik: 'Отзовик', tonkosti: 'Тонкости', irecommend: 'irecommend' };
+
+const store = {
+  get(k) { try { return localStorage.getItem(k) || ''; } catch { return ''; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+};
+const $ = id => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const json = f => fetch(f + '?t=' + Date.now()).then(r => r.json());
+
+let rules, docs, log = [], topics;
+
+async function freshLog() {
+  // Журнал читаем через API GitHub: так он свежий сразу после публикации, без кэша Pages
+  const token = store.get('gh');
+  if (!token) return json('data/log.json');
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/data/log.json`, {
+    headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' });
+  return r.ok ? r.json() : json('data/log.json');
+}
+
+function renderLog() {
+  $('n-log').textContent = log.length || '';
+  const tb = $('log-rows'); tb.textContent = '';
+  if (!log.length) { const tr = el('tr'); const td = el('td', null, 'Пока ничего не отправляли.'); td.colSpan = 3; tr.append(td); tb.append(tr); return; }
+  for (const e of log) {
+    const tr = el('tr');
+    tr.append(el('td', 'when', new Date(e.at).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })));
+    const what = el('td'); what.append(el('div', null, e.text || ''));
+    if (e.replyUrl) { const a = el('a', null, 'пост'); a.href = e.replyUrl; a.target = '_blank'; a.rel = 'noopener'; what.append(a); }
+    tr.append(what);
+    tr.append(el('td', e.ok ? 'st-ok' : 'st-no', e.ok ? 'Опубликовано' : e.reason));
+    tb.append(tr);
+  }
+}
+
+function renderPair(p) {
+  const box = el('article', 'pair');
+  const head = el('div', 'pair-head');
+  const t = (topics.topics.find(x => x.key === p.topic) || {});
+  head.append(el('h3', null, t.name || p.topic));
+  if (t.count) head.append(el('span', null, t.count.toLocaleString('ru-RU') + ' жалоб'));
+  box.append(head);
+
+  box.append(el('span', 'label', 'Негатив — для личного аккаунта'));
+  box.append(el('p', 'neg', p.negative));
+  const copy = el('button', 'copy', 'Скопировать'); copy.type = 'button';
+  copy.onclick = () => navigator.clipboard.writeText(p.negative).then(() => { copy.textContent = 'Скопировано'; setTimeout(() => copy.textContent = 'Скопировать', 1500); });
+  box.append(copy);
+
+  const lblP = el('label', 'label', 'Позитив — ответ от @zavidovobarn'); lblP.htmlFor = 'pos-' + p.id;
+  box.append(lblP);
+  const ta = el('textarea'); ta.id = 'pos-' + p.id; ta.value = store.get('pos-' + p.id) || p.positive;
+  const cnt = el('div', 'count');
+  box.append(ta, cnt);
+  if (p.check) box.append(el('p', 'check', p.check));
+
+  const lblU = el('label', 'label', 'Ссылка на твой пост с негативом'); lblU.htmlFor = 'url-' + p.id;
+  box.append(lblU);
+  const row = el('div', 'row');
+  const url = el('input'); url.id = 'url-' + p.id; url.type = 'url'; url.placeholder = 'threads.com/@ник/post/…'; url.value = store.get('url-' + p.id);
+  const ok = el('button', 'ok-btn', 'ОК'); ok.type = 'button';
+  row.append(url, ok);
+  const verdict = el('p', 'verdict'); verdict.setAttribute('aria-live', 'polite');
+  box.append(row, verdict);
+
+  const sentHere = () => log.find(e => e.ok && e.id === p.id);
+  function refresh() {
+    ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 2 + 'px';
+    store.set('pos-' + p.id, ta.value); store.set('url-' + p.id, url.value.trim());
+    const n = ta.value.trim().length;
+    cnt.textContent = n + ' / ' + rules.api.maxTextLength; cnt.className = 'count' + (n > rules.api.maxTextLength ? ' over' : '');
+    const done = sentHere();
+    if (done) { verdict.className = 'verdict yes'; verdict.textContent = 'Опубликовано ' + new Date(done.at).toLocaleString('ru-RU'); ok.disabled = true; return; }
+    if (!url.value.trim()) { verdict.className = 'verdict'; verdict.textContent = ''; ok.disabled = true; return; }
+    const v = check({ text: ta.value, replyUrl: url.value.trim(), rules, log, docs });
+    verdict.className = 'verdict' + (v.ok ? '' : ' no');
+    verdict.textContent = v.ok ? 'Правила и частота в порядке — можно отправлять.' : v.reason + ' ' + waitText(v.waitMinutes);
+    ok.disabled = !v.ok;
+  }
+  ta.oninput = refresh; url.oninput = refresh;
+  ok.onclick = () => send(p, ta.value.trim(), url.value.trim(), ok, verdict, refresh);
+  refresh();
+  box.refresh = refresh;
+  return box;
+}
+
+async function send(p, text, replyUrl, btn, verdict, refresh) {
+  const token = store.get('gh');
+  if (!token) { verdict.className = 'verdict no'; verdict.textContent = 'Сначала вставь ключ GitHub внизу страницы.'; return; }
+  btn.disabled = true; verdict.className = 'verdict'; verdict.textContent = 'Отправляю на сервер…';
+  const r = await fetch(`https://api.github.com/repos/${REPO}/dispatches`, {
+    method: 'POST', headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' },
+    body: JSON.stringify({ event_type: 'publish', client_payload: { id: p.id, text, reply_url: replyUrl } }) });
+  if (!r.ok) { verdict.className = 'verdict no'; verdict.textContent = 'GitHub не принял запрос (' + r.status + '). Проверь ключ.'; btn.disabled = false; return; }
+  verdict.textContent = 'Сервер проверяет правила и публикует, это около минуты…';
+  const before = log.length;
+  for (let i = 0; i < 24; i++) {
+    await new Promise(res => setTimeout(res, 10000));
+    const fresh = await freshLog().catch(() => log);
+    if (fresh.length > before) {
+      log = fresh; renderLog();
+      const last = log[0];
+      if (!last.ok) { verdict.className = 'verdict no'; verdict.textContent = 'Сервер отказал: ' + last.reason; btn.disabled = false; }
+      else refresh();
+      document.querySelectorAll('.pair').forEach(b => b.refresh && b.refresh());
+      return;
+    }
+  }
+  verdict.textContent = 'Сервер долго не отвечает. Загляни в «Журнал» через пару минут.';
+}
+
+function renderTopics() {
+  $('n-neg').textContent = topics.total.toLocaleString('ru-RU');
+  $('neg-sub').textContent = `${topics.total.toLocaleString('ru-RU')} отзывов на 1–3★ о ${topics.objects} местах по всей России. Обновлено ${topics.built}.`;
+  const s = $('srcs');
+  for (const [k, n] of Object.entries(topics.sources)) { const li = el('li'); li.append(el('b', null, n.toLocaleString('ru-RU')), ' ' + (SRC[k] || k)); s.append(li); }
+  const max = topics.topics[0].count, box = $('topics');
+  for (const t of topics.topics) {
+    const row = el('div', 'topic');
+    row.append(el('span', null, t.name));
+    const bar = el('div', 'bar'); bar.style.width = (t.count / max * 100) + '%'; row.append(bar);
+    row.append(el('span', 'n', t.count.toLocaleString('ru-RU')));
+    box.append(row);
+  }
+}
+
+function initTabs() {
+  document.querySelectorAll('.tab').forEach(b => b.onclick = () => {
+    document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    for (const id of ['posts', 'neg', 'log']) $(id).hidden = id !== b.dataset.tab;
+    store.set('tab', b.dataset.tab);
+  });
+  const saved = store.get('tab'); if (saved) { const b = document.querySelector(`.tab[data-tab="${saved}"]`); if (b) b.click(); }
+}
+
+function initToken() {
+  const show = () => $('gh-state').textContent = store.get('gh') ? 'Ключ сохранён в этом браузере.' : 'Ключа нет — кнопка «ОК» не сработает.';
+  $('gh-save').onclick = () => { store.set('gh', $('gh-token').value.trim()); $('gh-token').value = ''; show(); };
+  show();
+}
+
+const [pairs] = await Promise.all([
+  json('data/pairs.json'),
+  json('data/rules.json').then(x => rules = x),
+  json('data/docs-status.json').then(x => docs = x),
+  json('data/topics.json').then(x => topics = x),
+]);
+log = await freshLog().catch(() => []);
+if (docs.changed) { const n = $('docs-note'); n.hidden = false; n.textContent = 'Документация Threads изменилась ' + (docs.since || '') + '. Публикация на паузе, пока правила не сверят.'; }
+$('n-posts').textContent = pairs.length;
+const weight = p => p.topic === 'другое' ? -1 : (topics.topics.find(t => t.key === p.topic) || { count: 0 }).count;
+pairs.sort((a, b) => weight(b) - weight(a)).forEach(p => { const box = renderPair(p); $('posts').append(box); box.refresh(); });
+renderTopics(); renderLog(); initTabs(); initToken();
+</script>
+</body>
+</html>

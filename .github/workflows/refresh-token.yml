@@ -1,0 +1,18 @@
+name: Продление токена Threads
+# Долгий токен Threads живёт 60 дней; продлеваем раз в месяц.
+on:
+  schedule:
+    - cron: '0 5 1 * *'
+  workflow_dispatch:
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Продлить и сохранить
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          NEW=$(curl -sf "https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token&access_token=$THREADS_TOKEN" | jq -r .access_token)
+          test -n "$NEW" && test "$NEW" != "null"
+          gh secret set THREADS_TOKEN --repo "$GITHUB_REPOSITORY" --body "$NEW"

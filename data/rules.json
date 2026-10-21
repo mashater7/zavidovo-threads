@@ -1,0 +1,34 @@
+{
+  "updated": "2026-10-21",
+  "sources": [
+    "https://developers.facebook.com/docs/threads/posts",
+    "https://developers.facebook.com/docs/threads/reply-management",
+    "https://developers.facebook.com/docs/threads/troubleshooting",
+    "https://transparency.meta.com/policies/community-standards/inauthentic-behavior/",
+    "https://transparency.meta.com/policies/community-standards/spam/"
+  ],
+  "api": {
+    "maxTextLength": 500,
+    "maxTopicTags": 1,
+    "repliesPer24hApi": 1000,
+    "note": "Threads API: 250 постов и 1000 ответов за 24 часа на профиль. Текущий расход сервер берёт из /me/threads_publishing_limit перед каждой публикацией."
+  },
+  "ours": {
+    "repliesPer24h": 5,
+    "minIntervalMinutes": 60,
+    "oneReplyPerPost": true,
+    "note": "Свой осторожный лимит: правила Meta про спам запрещают массовые однотипные ответы."
+  },
+  "allowedLinks": ["zavidovobarn.ru", "t.me/barnhousezavidovo"],
+  "forbidden": [
+    { "re": "\\d[\\d\\s]*(₽|руб|р\\.|тыс)", "why": "Цены не называем, пока не решён вопрос о цене (facts.md, п. 1)" },
+    { "re": "4[,.]7", "why": "Рейтинг 4,7 не подтверждён (facts.md, п. 7)" },
+    { "re": "мария|хозяйка|владелица", "why": "Не упоминаем хозяйку (решение 29.09)" },
+    { "re": "в отличие от|у других|у конкурент|не то что|не как у", "why": "Без сравнений с другими местами" },
+    { "re": "глэмпинг[а-я]* «|база «|отель «", "why": "Не называем другие объекты" }
+  ],
+  "repetition": {
+    "sameTextPer24h": 1,
+    "why": "Одинаковый текст в нескольких ответах Meta считает спамом"
+  }
+}
