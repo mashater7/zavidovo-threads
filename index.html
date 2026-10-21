@@ -92,6 +92,8 @@
   .st-ok { color: var(--pen); font-weight: 700; }
   .st-no { color: var(--red-pen); }
 
+  .group-title { margin: 28px 0 2px; }
+  .group-n { font: 700 18px/1 "PT Sans", sans-serif; color: var(--muted); }
   .toolbar { justify-content: space-between; margin: 0 0 8px; }
   .toolbar .sub, .toolbar h2 { margin: 0; }
   .table-wrap { overflow-x: auto; }
@@ -354,7 +356,17 @@ function countAnswers() { $('n-answers').textContent = document.querySelectorAll
 function renderAnswers() {
   const list = $('answers-list'); list.textContent = '';
   const fresh = answers.entries.filter(e => !store.get('skip-' + e.id));
-  fresh.forEach(e => { const box = renderAnswer(e); list.append(box); box.refresh(); });
+  const groups = [
+    ['request', 'Целевые запросы', 'ищут дом, баню, куда поехать за город'],
+    ['self_promo', 'Самореклама', 'ветки, где можно рассказать о себе'],
+  ];
+  for (const [kind, title, hint] of groups) {
+    const items = fresh.filter(e => (e.kind === 'self_promo') === (kind === 'self_promo'));
+    const h = el('h2', 'group-title', title + ' ');
+    h.append(el('span', 'group-n', String(items.length)));
+    list.append(h, el('p', 'sub', items.length ? hint : hint + ' — пока ничего нового'));
+    items.forEach(e => { const box = renderAnswer(e); list.append(box); box.refresh(); });
+  }
   $('answers-sub').textContent = fresh.length
     ? `Найдено постов: ${fresh.length}. Поиск обновлён ${new Date(answers.updated).toLocaleString('ru-RU')}.`
     : 'Новых постов пока нет. Поиск идёт сам каждый день в 10:00 или по кнопке.';
