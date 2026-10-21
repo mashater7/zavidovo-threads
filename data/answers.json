@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T16:02:29.310Z",
+  "updated": "2026-10-21T19:39:49.792Z",
   "entries": [
     {
       "id": "2026-10-21-09",
@@ -432,16 +432,6 @@
       "photos": 9
     },
     {
-      "id": "2026-10-21-79",
-      "kind": "self_promo",
-      "post_url": "https://www.threads.com/@wwntme/post/Dewq5_VCKbf",
-      "author": "@wwntme",
-      "post_text": "57 мин.\nВЕТКА саморекламы (day 2)\nпроверим вечерний актив \n1\n5\n1",
-      "post_date": "2026-10-21",
-      "reply_text": "Сдаём домики в Завидово: есть с чаном, есть с баней",
-      "photos": 9
-    },
-    {
       "id": "2026-10-21-81",
       "kind": "self_promo",
       "post_url": "https://www.threads.com/@balakai_pvl/post/DewtBfXDPBz",
@@ -494,18 +484,33 @@
   ],
   "sent": [
     {
+      "id": "2026-10-21-79",
+      "author": "@wwntme",
+      "post_url": "https://www.threads.com/@wwntme/post/Dewq5_VCKbf",
+      "reply_url": "https://www.threads.com/@zavidovobarn/post/DexKn4eiEo0",
+      "reply_text": "Сдаю домики в Завидово:  с чаном и с баней",
+      "sent_at": "2026-10-21T19:32:12.947Z",
+      "stats": {
+        "views": 0,
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0,
+        "checked_at": "2026-10-21T19:39:46.449Z"
+      }
+    },
+    {
       "id": "2026-10-21-42",
       "author": "@victoriakosyan",
       "post_url": "https://www.threads.com/@victoriakosyan/post/DewSl1rgitq",
-      "reply_url": "",
+      "reply_url": "https://www.threads.com/@zavidovobarn/post/DewdHRmiMT0",
       "reply_text": "У меня не отель, но вот мои домики в Завидово: есть с чаном, есть с баней",
       "sent_at": "2026-10-21T12:54:32.992Z",
       "stats": {
-        "views": null,
-        "likes": null,
-        "replies": null,
-        "reposts": null,
-        "checked_at": ""
+        "views": 63,
+        "likes": 2,
+        "reposts": 0,
+        "replies": 1,
+        "checked_at": "2026-10-21T19:39:32.480Z"
       }
     },
     {
@@ -516,11 +521,11 @@
       "reply_text": "У меня домики в Завидово с чаном и баней)",
       "sent_at": "2026-10-21T11:56:55.219Z",
       "stats": {
-        "views": 45,
+        "views": 54,
         "likes": 3,
         "reposts": 0,
         "replies": 2,
-        "checked_at": "2026-10-21T16:02:25.192Z"
+        "checked_at": "2026-10-21T19:39:19.147Z"
       }
     }
   ]
