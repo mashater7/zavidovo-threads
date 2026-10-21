@@ -1,9 +1,10 @@
 {
   "built": "2026-10-21",
-  "total": 5786,
+  "reviews_checked": "",
+  "total": 5787,
   "objects": 808,
   "sources": {
-    "yandex_travel": 3162,
+    "yandex_travel": 3163,
     "2gis": 1354,
     "yandex_maps": 983,
     "sutochno": 153,
@@ -14,31 +15,12 @@
   },
   "topics": [
     {
-      "key": "вода_туалет",
-      "name": "Вода и туалет",
-      "count": 910,
-      "sources": {
-        "yandex_travel": 523,
-        "yandex_maps": 204,
-        "2gis": 153,
-        "sutochno": 16,
-        "cian": 7,
-        "otello": 7
-      },
-      "examples": [
-        "Горячая вода кончается после второго человека: один бойлер на большой дом",
-        "Один общий туалет на всю базу, грязный, неубранный, «дыра в земле»",
-        "Вода пропадает или идёт ржавая, с запахом сероводорода; в домиках пахнет канализацией",
-        "Нет света и розеток, душ не работает — «сарай без горячей воды за 8 тысяч»"
-      ]
-    },
-    {
       "key": "грязь",
       "name": "Грязь",
-      "count": 868,
+      "count": 884,
       "sources": {
         "yandex_travel": 564,
-        "yandex_maps": 132,
+        "yandex_maps": 148,
         "2gis": 120,
         "sutochno": 34,
         "cian": 15,
@@ -53,13 +35,32 @@
       ]
     },
     {
+      "key": "вода_туалет",
+      "name": "Вода и туалет",
+      "count": 865,
+      "sources": {
+        "yandex_travel": 523,
+        "yandex_maps": 159,
+        "2gis": 153,
+        "sutochno": 16,
+        "cian": 7,
+        "otello": 7
+      },
+      "examples": [
+        "Горячая вода кончается после второго человека: один бойлер на большой дом",
+        "Один общий туалет на всю базу, грязный, неубранный, «дыра в земле»",
+        "Вода пропадает или идёт ржавая, с запахом сероводорода; в домиках пахнет канализацией",
+        "Нет света и розеток, душ не работает — «сарай без горячей воды за 8 тысяч»"
+      ]
+    },
+    {
       "key": "доплаты",
       "name": "Доплаты на месте",
-      "count": 542,
+      "count": 523,
       "sources": {
         "yandex_travel": 295,
         "2gis": 141,
-        "yandex_maps": 77,
+        "yandex_maps": 58,
         "cian": 16,
         "sutochno": 11,
         "otello": 2
@@ -74,11 +75,11 @@
     {
       "key": "шум",
       "name": "Шум",
-      "count": 440,
+      "count": 442,
       "sources": {
         "yandex_travel": 265,
         "2gis": 110,
-        "yandex_maps": 44,
+        "yandex_maps": 46,
         "sutochno": 16,
         "cian": 4,
         "otello": 1
@@ -93,11 +94,11 @@
     {
       "key": "баня_чан",
       "name": "Баня или чан не готовы",
-      "count": 396,
+      "count": 402,
       "sources": {
-        "yandex_travel": 191,
+        "yandex_travel": 192,
         "2gis": 162,
-        "yandex_maps": 34,
+        "yandex_maps": 39,
         "cian": 5,
         "otello": 2,
         "sutochno": 2
@@ -112,9 +113,9 @@
     {
       "key": "хозяин_хамит",
       "name": "Хозяин хамит",
-      "count": 341,
+      "count": 355,
       "sources": {
-        "yandex_maps": 130,
+        "yandex_maps": 144,
         "yandex_travel": 125,
         "2gis": 65,
         "cian": 9,
@@ -132,11 +133,11 @@
     {
       "key": "фото_не_соответствует",
       "name": "Фото не как в жизни",
-      "count": 298,
+      "count": 302,
       "sources": {
         "2gis": 119,
         "yandex_travel": 118,
-        "yandex_maps": 39,
+        "yandex_maps": 43,
         "sutochno": 11,
         "cian": 6,
         "otello": 5
@@ -151,11 +152,11 @@
     {
       "key": "предоплата_возврат",
       "name": "Не вернули предоплату",
-      "count": 264,
+      "count": 269,
       "sources": {
         "yandex_travel": 111,
         "2gis": 86,
-        "yandex_maps": 46,
+        "yandex_maps": 51,
         "cian": 17,
         "otello": 2,
         "sutochno": 2
@@ -170,11 +171,11 @@
     {
       "key": "дорога_доступ",
       "name": "Дорога",
-      "count": 200,
+      "count": 203,
       "sources": {
         "yandex_travel": 153,
         "2gis": 22,
-        "yandex_maps": 19,
+        "yandex_maps": 22,
         "sutochno": 5,
         "otello": 1
       },
@@ -187,10 +188,10 @@
     {
       "key": "холодно",
       "name": "Холодно",
-      "count": 195,
+      "count": 198,
       "sources": {
         "2gis": 85,
-        "yandex_maps": 59,
+        "yandex_maps": 62,
         "yandex_travel": 41,
         "sutochno": 8,
         "cian": 1,
@@ -206,11 +207,11 @@
     {
       "key": "насекомые",
       "name": "Насекомые",
-      "count": 133,
+      "count": 136,
       "sources": {
         "yandex_travel": 55,
         "2gis": 49,
-        "yandex_maps": 20,
+        "yandex_maps": 23,
         "sutochno": 7,
         "cian": 1,
         "otello": 1
@@ -223,11 +224,11 @@
     {
       "key": "животные",
       "name": "С животными нельзя / доплата",
-      "count": 111,
+      "count": 113,
       "sources": {
         "yandex_travel": 56,
         "2gis": 39,
-        "yandex_maps": 14,
+        "yandex_maps": 16,
         "cian": 1,
         "sutochno": 1
       },
@@ -240,11 +241,11 @@
     {
       "key": "другое",
       "name": "Другое",
-      "count": 1088,
+      "count": 1095,
       "sources": {
         "yandex_travel": 665,
         "2gis": 203,
-        "yandex_maps": 165,
+        "yandex_maps": 172,
         "sutochno": 31,
         "cian": 22,
         "otello": 2

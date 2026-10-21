@@ -45,8 +45,14 @@ def pick(lst, n=5):
 # На публичный сайт — только пересказ своими словами (data/topic-summaries.json), не дословные отзывы
 SUMMARIES = json.loads((root / 'data' / 'topic-summaries.json').read_text(encoding='utf-8'))
 
+try:  # когда последний раз нажимали «Обновить отзывы» (состояние пульта, только дата)
+    reviews_checked = json.loads((root.parent / 'negativ' / 'refresh-state.json').read_text(encoding='utf-8')).get('last_run', '')[:10]
+except (OSError, ValueError):
+    reviews_checked = ''
+
 out = {
     'built': datetime.date.today().isoformat(),
+    'reviews_checked': reviews_checked,
     'total': sum(topics.values()),
     'objects': len(objects),
     'sources': dict(sources.most_common()),
