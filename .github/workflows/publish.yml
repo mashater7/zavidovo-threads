@@ -1,7 +1,7 @@
 name: Публикация ответа
+# Заявки «ОК» с сайта сейчас публикует компьютер через Chrome (tools/server.mjs).
+# Путь через Threads API включится, когда появится токен THREADS_TOKEN.
 on:
-  issues:
-    types: [opened]
   repository_dispatch:
     types: [publish]
 permissions:
