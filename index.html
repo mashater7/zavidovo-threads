@@ -236,11 +236,7 @@ async function send(p, text, replyUrl, btn, verdict, refresh, photos = 0) {
   // «ОК» открывает GitHub с готовой заявкой. Кнопка «Create» там — подтверждение, что это ты:
   // сервер выполняет только заявки от владельца репозитория.
   const payload = { id: p.id, text, reply_url: replyUrl, photos };
-  const body = 'Нажми зелёную кнопку «Create» внизу — ответ уйдёт в Threads.
-
-```json
-' + JSON.stringify(payload, null, 2) + '
-```';
+  const body = 'Нажми зелёную кнопку «Create» внизу — ответ уйдёт в Threads.\n\n```json\n' + JSON.stringify(payload, null, 2) + '\n```';
   const url = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent('ОК: ' + p.id)}&body=${encodeURIComponent(body)}`;
   window.open(url, '_blank', 'noopener');
   btn.disabled = true; verdict.className = 'verdict';
