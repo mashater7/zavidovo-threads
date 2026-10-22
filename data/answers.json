@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T20:07:42.567Z",
+  "updated": "2026-10-22T07:13:44.994Z",
   "entries": [
     {
       "id": "2026-10-21-09",
@@ -482,16 +482,6 @@
       "photos": 9
     },
     {
-      "id": "2026-10-21-90",
-      "kind": "request",
-      "post_url": "https://www.threads.com/@cuba_b_._ch/post/Dew-fAxCK-k",
-      "author": "@cuba_b_._ch",
-      "post_text": "Товарищи , кто любит БАНЮ , посоветуйте пожалуйста место в мск или подмосковье . Но только чтоб реальная русская баня с хорошим паром , не пустой пафос( веник из мудей единорога) за конский ценник 🤍\n1",
-      "post_date": "2026-10-21",
-      "reply_text": "Сдаём домики в Завидово с чаном и баней",
-      "photos": 9
-    },
-    {
       "id": "2026-10-21-93",
       "kind": "self_promo",
       "post_url": "https://www.threads.com/@obyshenie_smm/post/DexBW7TE4GX",
@@ -660,9 +650,64 @@
       "post_date": "2026-10-21",
       "reply_text": "Мы сдаём домики в Завидово, с чаном и баней",
       "photos": 9
+    },
+    {
+      "id": "2026-10-22-01",
+      "kind": "self_promo",
+      "post_url": "https://www.threads.com/@aleksa_kulyaeva/post/Dev1y4Ujzlq",
+      "author": "@aleksa_kulyaeva",
+      "post_text": "ВЕТКА САМОРЕКЛАМЫ 💌 рассказывайте, чем занимаетесь и кому можете быть полезны 🤍💸\n14\n51",
+      "post_date": "2026-10-21",
+      "reply_text": "Сдаём домики в Завидово: есть с чаном, есть с баней",
+      "photos": 9
+    },
+    {
+      "id": "2026-10-22-02",
+      "kind": "self_promo",
+      "post_url": "https://www.threads.com/@romanich42s/post/Dev-L7yEm3M",
+      "author": "@romanich42s",
+      "post_text": "Ветка САМОРЕКЛАМЫ🚀\nКоснулся, получил клиента🕺🏼\n13\n35",
+      "post_date": "2026-10-21",
+      "reply_text": "У нас домики в Завидово с чаном и баней, сдаём посуточно",
+      "photos": 9
+    },
+    {
+      "id": "2026-10-22-05",
+      "kind": "self_promo",
+      "post_url": "https://www.threads.com/@gazi_gazievich/post/Dew4JtsCLfY",
+      "author": "@gazi_gazievich",
+      "post_text": "Поддержите малый бизнес\nRudnyy, Qostanay, Kazakhstan\n3",
+      "post_date": "2026-10-21",
+      "reply_text": "Сдаём домики в Завидово с чаном и баней",
+      "photos": 9
+    },
+    {
+      "id": "2026-10-22-06",
+      "kind": "self_promo",
+      "post_url": "https://www.threads.com/@bizbotmarket_/post/DewKIxFjvg8",
+      "author": "@bizbotmarket_",
+      "post_text": "Сегодня видимо день ветки саморекламы))) С праздником!🤣",
+      "post_date": "2026-10-21",
+      "reply_text": "Мы сдаём домики в Завидово, с чаном и баней",
+      "photos": 9
     }
   ],
   "sent": [
+    {
+      "id": "2026-10-21-90",
+      "author": "@cuba_b_._ch",
+      "post_url": "https://www.threads.com/@cuba_b_._ch/post/Dew-fAxCK-k",
+      "reply_url": "https://www.threads.com/@zavidovobarn/post/DexSDRCiFNg",
+      "reply_text": "сдаю домик с баней в завидово. простенькая баня, но сама в ней ни разу не парилась, хах. Гости до 120 ее разогревали. Вы с какой максимальной температурой парились?",
+      "sent_at": "2026-10-21T20:37:17.373Z",
+      "stats": {
+        "views": 0,
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0,
+        "checked_at": "2026-10-22T07:13:40.754Z"
+      }
+    },
     {
       "id": "2026-10-21-79",
       "author": "@wwntme",
@@ -671,11 +716,11 @@
       "reply_text": "Сдаю домики в Завидово:  с чаном и с баней",
       "sent_at": "2026-10-21T19:32:12.947Z",
       "stats": {
-        "views": 0,
-        "likes": 0,
+        "views": 10,
+        "likes": 1,
         "reposts": 0,
         "replies": 0,
-        "checked_at": "2026-10-21T20:07:40.103Z"
+        "checked_at": "2026-10-22T07:13:28.534Z"
       }
     },
     {
@@ -686,11 +731,11 @@
       "reply_text": "У меня не отель, но вот мои домики в Завидово: есть с чаном, есть с баней",
       "sent_at": "2026-10-21T12:54:32.992Z",
       "stats": {
-        "views": 67,
+        "views": 91,
         "likes": 2,
         "reposts": 0,
         "replies": 1,
-        "checked_at": "2026-10-21T20:07:23.305Z"
+        "checked_at": "2026-10-22T07:13:15.413Z"
       }
     },
     {
@@ -701,11 +746,11 @@
       "reply_text": "У меня домики в Завидово с чаном и баней)",
       "sent_at": "2026-10-21T11:56:55.219Z",
       "stats": {
-        "views": 54,
+        "views": 69,
         "likes": 3,
         "reposts": 0,
-        "replies": 2,
-        "checked_at": "2026-10-21T20:07:07.584Z"
+        "replies": 3,
+        "checked_at": "2026-10-22T07:12:59.616Z"
       }
     }
   ]
