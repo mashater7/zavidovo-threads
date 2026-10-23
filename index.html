@@ -135,6 +135,47 @@
   details.settings summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
   details.settings p { margin: 6px 0; font-size: 14px; }
 
+  /* Воронки: одна полоса = один шаг; длина — доля от первого шага, процент — переход между шагами */
+  .fn { margin: 4px 0 6px; }
+  .fn-row { display: grid; grid-template-columns: 210px 1fr 76px 200px; gap: 6px 14px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+  .fn-label { color: var(--ink); line-height: 1.25; }
+  .fn-label small { display: block; color: var(--muted); font-size: 13px; }
+  .fn-track { height: 14px; background: rgba(43,79,158,.07); border-radius: 0 3px 3px 0; }
+  .fn-track i { display: block; height: 100%; min-width: 3px; background: var(--pen); border-radius: 0 3px 3px 0; }
+  .fn-row.goal .fn-track i { background: var(--fire); }
+  .fn-row.goal .fn-label { font-weight: 700; }
+  .fn-n { text-align: right; color: var(--pen); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .fn-p { color: var(--muted); font-size: 13px; line-height: 1.3; }
+  .fn-p b { color: var(--ink); font-size: 15px; }
+  .fn-p.drop b { color: #B4600F; }
+  .fn-row.nodata .fn-track { background: none; height: 0; border-top: 1px solid var(--rule); }
+  .fn-row.nodata .fn-n, .fn-row.nodata .fn-label { color: var(--muted); }
+  .fn-note { color: var(--muted); font-size: 13px; margin: 6px 0 14px; }
+  .rp-list { margin: 4px 0 0; }
+  .rp { display: grid; grid-template-columns: 1fr 380px; gap: 8px 28px; padding: 12px 0 4px; border-bottom: 1px solid var(--rule); }
+  .rp-meta { color: var(--muted); font-size: 13px; }
+  .rp-meta .best { color: #B4600F; font-weight: 700; }
+  .rp-text { margin: 2px 0; }
+  .rp-side { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  #log .links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--pen); }
+  .mf-row { display: grid; grid-template-columns: 88px 1fr 44px 58px 54px; gap: 8px; align-items: center; font-size: 13px; min-height: 24px; }
+  .mf-row > span:first-child { color: var(--muted); }
+  .mf-row .fn-track { height: 8px; }
+  .mf-row b { text-align: right; color: var(--pen); font-variant-numeric: tabular-nums; }
+  .mf-row em { font-style: normal; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mf-row em.drop { color: #B4600F; font-weight: 700; }
+  .mf-empty { color: var(--muted); font-size: 13px; padding-top: 4px; }
+  /* светофор: точка + слово; оценка Threads «выше / обычный / ниже обычного» или динамика аккаунта */
+  .lt { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+  .lt i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; flex: none; }
+  .lt-up { color: #2F7A45; }
+  .lt-same { color: var(--muted); }
+  .lt-down { color: var(--red-pen); }
+  .fn-label .lt { display: flex; margin-top: 2px; }
+  .mf-lt { min-width: 54px; }
+  .more-btn { font: inherit; color: var(--pen); background: none; border: 1.5px solid var(--pen); border-radius: 4px; min-height: 44px; padding: 0 16px; margin-top: 12px; cursor: pointer; }
+  #log .switch { margin: 0; }
+
   @media (max-width: 640px) {
     .sheet { padding: 20px 16px 48px 40px; }
     .sheet::before { left: 26px; }
@@ -144,13 +185,13 @@
     .ok-btn { width: 100%; }
     /* журнал: строка таблицы → карточка, цифры с подписями под текстом, без прокрутки вбок */
     .kpis { grid-template-columns: 1fr 1fr; }
-    #log .table-wrap table { min-width: 0; }
-    #log table, #log tbody, #log tr, #log td { display: block; }
-    #log thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-    #log tr { padding: 10px 0; border-bottom: 1px solid var(--rule); }
-    #log td { border: 0; padding: 2px 0; width: auto; }
-    #log td.num { display: inline-block; text-align: left; margin: 4px 14px 0 0; }
-    #log td.num::after { content: " " attr(data-label); font-weight: 400; color: var(--muted); font-size: 13px; }
+    /* воронка: подпись и число в строку, полоса и процент под ними */
+    .fn-row { grid-template-columns: 1fr auto; gap: 4px 12px; padding: 8px 0; }
+    .fn-row .fn-track { grid-column: 1 / -1; grid-row: 2; }
+    .fn-row .fn-p { grid-column: 1 / -1; }
+    .rp { grid-template-columns: 1fr; gap: 6px; }
+    .mf-row { grid-template-columns: 76px 1fr 36px 50px 50px; gap: 6px; }
+    #log .switch { margin: 6px 0; }
   }
 </style>
 </head>
@@ -195,13 +236,15 @@
     </div>
     <p class="sub" id="log-sub"></p>
     <div class="acct" id="acct" hidden></div>
-    <h3 class="acct-h">Каждый ответ</h3>
-    <div class="table-wrap">
-    <table>
-      <thead><tr><th>Когда</th><th>Кому и что</th><th class="num">Просмотры</th><th class="num">Зашли<br>в профиль</th><th class="num">Подписались</th><th class="num">Лайки</th><th class="num">Ответы</th><th class="num">Репосты</th></tr></thead>
-      <tbody id="log-rows"></tbody>
-    </table>
+    <div class="row toolbar">
+      <h3 class="acct-h">Каждый ответ</h3>
+      <div class="switch" role="group" aria-label="Порядок ответов" id="rp-sort">
+        <button class="switch-btn" type="button" data-sort="new" aria-pressed="true">Сначала новые</button>
+        <button class="switch-btn" type="button" data-sort="best" aria-pressed="false">Больше всех привели</button>
+      </div>
     </div>
+    <div id="rp-total"></div>
+    <div class="rp-list" id="log-rows"></div>
   </section>
 
 </main>
@@ -230,19 +273,53 @@ async function freshLog() {
   return r.ok ? r.json() : json('data/log.json');
 }
 
+// Числа и проценты по-русски: «8 534», «4,3 %». Нет данных — «—», а не 0.
+const num = v => (typeof v === 'number' ? v.toLocaleString('ru-RU') : '—');
+const isNum = v => typeof v === 'number' && isFinite(v);
+const pct = (a, b) => {
+  if (!isNum(a) || !isNum(b) || b <= 0) return '—';
+  const x = a / b * 100;
+  return x.toLocaleString('ru-RU', { maximumFractionDigits: x > 0 && x < 1 ? 2 : 1 }) + ' %';
+};
+// Воронка: строки {label, sub, value, pb (жирный процент), p (подпись), goal, nodata, drop}; длина полосы — доля от первого шага
+// Светофор: точка + слово (цвет не единственный признак). kind: up / same / down
+function light(kind, word) {
+  if (!kind) return '';
+  const s = el('span', 'lt lt-' + kind); s.append(el('i'), word || { up: 'выше обычного', same: 'как обычно', down: 'ниже обычного' }[kind]);
+  return s;
+}
+// Динамика аккаунта к прошлым 30 дням (так её показывает Threads) → светофор
+function trend(ch) {
+  if (!isNum(ch)) return '';
+  if (ch === 0) return light('same', 'без изменений');
+  const t = Math.abs(ch) >= 1000 ? `в ${Math.round(ch / 100 + 1).toLocaleString('ru-RU')} раз` : (ch > 0 ? '+' : '−') + String(Math.abs(ch)).replace('.', ',') + ' %';
+  return light(ch > 0 ? 'up' : 'down', (ch > 0 ? 'растёт ' : 'падает ') + t);
+}
+
+function funnel(rows, top) {
+  const box = el('div', 'fn');
+  for (const r of rows) {
+    const row = el('div', 'fn-row' + (r.goal ? ' goal' : '') + (r.nodata ? ' nodata' : ''));
+    const lab = el('div', 'fn-label', r.label); if (r.sub) lab.append(el('small', null, r.sub)); if (r.light) lab.append(r.light);
+    const tr = el('div', 'fn-track');
+    if (!r.nodata && isNum(r.value) && isNum(top) && top > 0) {
+      const i = el('i'); i.style.width = Math.max(0, Math.min(100, r.value / top * 100)) + '%';
+      tr.title = r.label + ': ' + num(r.value) + (r.pb ? ' · ' + r.pb + ' ' + (r.p || '') : ''); tr.append(i);
+    }
+    const p = el('div', 'fn-p' + (r.drop ? ' drop' : ''));
+    if (r.pb) p.append(el('b', null, r.pb), ' ' + (r.p || '')); else p.textContent = r.p || '';
+    row.append(lab, tr, el('b', 'fn-n', r.nodata ? '—' : num(r.value)), p);
+    box.append(row);
+  }
+  return box;
+}
+
 // Страница «Статистика» аккаунта в Threads (собирает пульт вместе с цифрами по ответам)
 function renderAccount() {
   const a = account, box = $('acct');
   box.hidden = !a; box.textContent = ''; if (!a) return;
   const n = v => (typeof v === 'number' ? v.toLocaleString('ru-RU') : '—');
   const head = el('h3', 'acct-h', 'Весь аккаунт · ' + (a.period || 'последние 30 дней').toLowerCase());
-  const kpis = el('div', 'kpis');
-  const kpi = (v, label, cls) => { const d = el('div', 'kpi' + (cls ? ' ' + cls : '')); d.append(el('b', null, v), el('span', null, label)); kpis.append(d); };
-  kpi(n(a.views), 'просмотров');
-  kpi(n(a.viewers), 'зрителей' + (a.viewers_nonfollowers != null ? `, из них ${n(a.viewers_nonfollowers)} не подписаны` : ''));
-  kpi(n(a.followers), 'подписчиков' + (a.followers_net != null ? ` (${a.followers_net > 0 ? '+' : ''}${n(a.followers_net)} за период)` : ''));
-  kpi(n(a.interactions), 'лайков, ответов и репостов');
-  for (const l of a.links || []) kpi(n(l.clicks), `кликов по ссылке «${l.title}»`, 'fire');
   const demo = d => {
     const g = el('div', 'demo');
     for (const [key, title] of [['countries', 'Страны'], ['cities', 'Города'], ['age', 'Возраст'], ['gender', 'Пол']]) {
@@ -261,7 +338,18 @@ function renderAccount() {
     for (const p of a.peak) { const li = el('li'); li.append(el('span', null, (DAY[p.day] || p.day) + ', ' + hh(p.time)), el('b', null, n(p.viewers))); ol.append(li); } col.append(ol); more.append(col); }
   if ((a.interests || []).length) { const col = el('div'); col.append(el('span', 'label', 'Чем интересуются зрители')); const ol = el('ol');
     for (const p of a.interests) { const li = el('li'); li.append(el('span', null, p.name), el('b', null, n(p.n))); ol.append(li); } col.append(ol); more.append(col); }
-  box.append(head, kpis, el('span', 'label', 'Кто смотрит'), demo(a.viewers_demo), more);
+  // Главная воронка аккаунта: увидели → отреагировали → (профиль — нет данных) → клик и подписка
+  const top = a.viewers, ch = a.change || {};
+  const rows = [
+    { label: 'Увидели', sub: isNum(a.views) ? num(a.views) + ' просмотров' : '', value: a.viewers, light: trend(ch.viewers),
+      pb: isNum(a.viewers_nonfollowers) ? pct(a.viewers_nonfollowers, a.viewers) : '', p: isNum(a.viewers_nonfollowers) ? 'не подписаны на нас' : '' },
+    { label: 'Отреагировали', sub: 'лайки, ответы, репосты', value: a.interactions, light: trend(ch.interactions), pb: pct(a.interactions, top), p: 'от увидевших' },
+    { label: 'Зашли в профиль', nodata: true, p: 'Threads не считает по аккаунту, только по каждому ответу' },
+  ];
+  for (const l of a.links || []) rows.push({ label: `Нажали «${l.title}»`, value: l.clicks, goal: true, pb: pct(l.clicks, top), p: 'от увидевших' });
+  if (isNum(a.followers_net)) rows.push({ label: 'Подписались', sub: 'прирост за период' + (isNum(a.followers) ? ', всего ' + num(a.followers) : ''), value: a.followers_net, goal: true, light: trend(ch.followers_net), pb: pct(a.followers_net, top), p: 'от увидевших' });
+  const fnote = el('p', 'fn-note', 'Все посты и ответы аккаунта вместе. Цветом — как изменилось к прошлым 30 дням (для кликов Threads это не показывает). Реакции — это действия: один человек мог поставить несколько. Бронирования Threads не видит.');
+  box.append(head, funnel(rows, top), fnote, el('span', 'label', 'Кто смотрит'), demo(a.viewers_demo), more);
   if (a.followers_demo && Object.keys(a.followers_demo).length) {
     const det = el('details'); det.append(el('summary', null, 'Кто подписан'), demo(a.followers_demo)); box.append(det);
   }
@@ -275,28 +363,95 @@ function renderLog() {
   const checked = sent.map(e => e.stats && e.stats.checked_at).filter(Boolean).sort().pop();
   $('log-sub').textContent = checked ? 'Цифры обновлены ' + new Date(checked).toLocaleString('ru-RU') + '. Обновляются сами каждый день вместе с поиском. По ответам смотрим последние сутки, у старых — последние собранные цифры.' : 'Цифры появятся после первого обновления.';
   renderAccount();
+  renderReplies(sent);
+}
+
+// Каждый ответ: мини-воронка «увидели → в профиль → подписались»; процент — переход с прошлого шага
+let rpSort = 'new', rpAll = false, rpSent = [];
+const RP_SHOW = 7;
+function renderReplies(sent) {
+  rpSent = sent;
   const tb = $('log-rows'); tb.textContent = '';
-  if (!sent.length) { const tr = el('tr'); const td = el('td', null, 'Пока ничего не отправляли.'); td.colSpan = 8; tr.append(td); tb.append(tr); return; }
-  const n = v => (typeof v === 'number' ? v.toLocaleString('ru-RU') : '—');
-  for (const e of sent) {
-    const tr = el('tr');
-    tr.append(el('td', 'when', e.sent_at ? new Date(e.sent_at).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—'));
-    const what = el('td');
-    what.append(el('div', null, (e.author ? e.author + ': ' : '') + (e.reply_text || '')));
-    const links = el('div', 'links');
-    if (e.post_url) { const a = el('a', null, 'их пост'); a.href = e.post_url; a.target = '_blank'; a.rel = 'noopener'; links.append(a, ' · '); }
-    if (e.reply_url) { const a = el('a', null, 'наш ответ'); a.href = e.reply_url; a.target = '_blank'; a.rel = 'noopener'; links.append(a); }
-    what.append(links);
-    tr.append(what);
-    const st = e.stats || {};
-    if ((st.sources || []).length) what.append(el('div', 'src', 'Откуда просмотры: ' + st.sources.map(s => s.name + ' ' + String(s.pct).replace('.', ',') + ' %').join(', ')));
-    // data-label — подпись цифры на телефоне, где таблица складывается в карточки
-    for (const [k, label] of [['views', 'просмотров'], ['profile_visits', 'в профиль'], ['follows', 'подписались'], ['likes', 'лайков'], ['replies', 'ответов'], ['reposts', 'репостов']]) {
-      const td = el('td', 'num', n(st[k])); td.dataset.label = label; tr.append(td);
+  const total = $('rp-total'); total.textContent = '';
+  $('rp-sort').hidden = sent.length < 2;
+  if (!sent.length) { tb.append(el('p', 'sub', 'Пока ничего не отправляли.')); return; }
+  const st = e => e.stats || {};
+  const reach = s => (isNum(s.viewers) ? s.viewers : s.views);
+  // Сумма по всем ответам — только там, где цифры есть
+  const sum = k => sent.reduce((t, e) => t + (isNum(st(e)[k]) ? st(e)[k] : 0), 0);
+  const withStats = sent.filter(e => isNum(st(e).viewers)).length;
+  if (withStats) {
+    const V = sum('viewers'), P = sum('profile_visits'), F = sum('follows');
+    const pP = V > 0 ? P / V : 0, pF = P > 0 ? F / P : 0;
+    total.append(el('span', 'label', `Все ответы вместе · ${withStats} с цифрами`), funnel([
+      { label: 'Увидели ответы', sub: num(sum('views')) + ' просмотров', value: V },
+      { label: 'Зашли в профиль', value: P, pb: pct(P, V), p: 'от увидевших', drop: pP <= pF },
+      { label: 'Подписались', value: F, goal: true, pb: pct(F, P), p: 'от зашедших в профиль', drop: pF < pP },
+    ], V), el('p', 'fn-note', 'Клик «Забронировать домик» Threads считает только по профилю целиком — он в воронке аккаунта выше. Процент в строке ответа — сколько перешли с прошлого шага.'));
+  }
+  const best = sent.length > 1 ? sent.reduce((b, e) => ((st(e).profile_visits || 0) > (st(b).profile_visits || 0) ? e : b), sent[0]) : null;
+  const bestId = best && (st(best).profile_visits || 0) > 0 ? best.id : null;
+  const list = sent.slice();
+  if (rpSort === 'best') list.sort((x, y) => (st(y).profile_visits || 0) - (st(x).profile_visits || 0) || (reach(st(y)) || 0) - (reach(st(x)) || 0));
+  else list.sort((x, y) => String(y.sent_at || '').localeCompare(String(x.sent_at || '')));
+  const shown = rpAll ? list : list.slice(0, RP_SHOW);
+  for (const e of shown) {
+    const s = st(e), card = el('article', 'rp');
+    const left = el('div');
+    const meta = el('div', 'rp-meta', (e.sent_at ? new Date(e.sent_at).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—') + (e.author ? ' · ' + e.author : ''));
+    if (e.id === bestId) meta.append(' · ', el('span', 'best', 'больше всех привёл в профиль'));
+    left.append(meta, el('p', 'rp-text', e.reply_text || ''));
+    const vd = s.verdicts || {};
+    const side = el('div', 'rp-side');
+    for (const [k, l] of [['views', 'просмотров'], ['likes', 'лайков'], ['replies', 'ответов'], ['reposts', 'репостов']]) {
+      if (!(k in s)) continue;
+      if (side.childNodes.length) side.append(' · ');
+      side.append(l + ' ' + num(s[k]) + ' ');
+      if (k !== 'reposts' || vd[k] !== 'same') side.append(light(vd[k]));   // репосты почти всегда 0 «как обычно» — не шумим
     }
-    tb.append(tr);
+    if (side.childNodes.length) left.append(side);
+    if ((s.sources || []).length) left.append(el('div', 'rp-side', 'Откуда: ' + s.sources.map(x => x.name + ' ' + String(x.pct).replace('.', ',') + ' %').join(', ')));
+    const links = el('div', 'links');
+    if (e.post_url) { const a = el('a', null, 'их пост'); a.href = e.post_url; a.target = '_blank'; a.rel = 'noopener'; links.append(a); }
+    if (e.post_url && e.reply_url) links.append(' · ');
+    if (e.reply_url) { const a = el('a', null, 'наш ответ'); a.href = e.reply_url; a.target = '_blank'; a.rel = 'noopener'; links.append(a); }
+    left.append(links);
+    const right = el('div');
+    const top = reach(s);
+    if (!isNum(top)) right.append(el('div', 'mf-empty', 'Цифр пока нет — появятся после обновления.'));
+    else if (top === 0) right.append(el('div', 'mf-empty', 'Пока 0 просмотров.'));
+    else {
+      const pP = isNum(s.profile_visits) ? s.profile_visits / top : null;
+      const pF = isNum(s.follows) && s.profile_visits > 0 ? s.follows / s.profile_visits : null;
+      const low = pP != null && pF != null ? (pP <= pF ? 'p' : 'f') : null;
+      const mrow = (label, v, p, fire, isLow, kind) => {
+        const r = el('div', 'mf-row'), tr = el('div', 'fn-track');
+        if (isNum(v)) { const i = el('i'); i.style.width = Math.min(100, v / top * 100) + '%'; if (fire) i.style.background = 'var(--fire)'; tr.append(i); }
+        tr.title = label + ': ' + num(v) + (p ? ' · ' + p : '');
+        const lt = el('span', 'mf-lt'); if (kind) lt.append(light(kind, { up: 'выше', same: 'норма', down: 'ниже' }[kind]));
+        r.append(el('span', null, label), tr, el('b', null, num(v)), el('em', isLow ? 'drop' : '', p || ''), lt);
+        return r;
+      };
+      right.append(
+        mrow(isNum(s.viewers) ? 'увидели' : 'просмотры', top, '', false, false, vd.viewers || vd.views),
+        // у свежего ответа Threads обновляет зрителей и заходы в профиль с разной скоростью — процент > 100 не показываем
+        mrow('в профиль', s.profile_visits, isNum(s.profile_visits) && s.profile_visits <= top ? pct(s.profile_visits, top) : '', false, low === 'p', vd.profile_visits),
+        mrow('подписались', s.follows, isNum(s.follows) ? (s.profile_visits > 0 ? pct(s.follows, s.profile_visits) : '—') : '', true, low === 'f', vd.follows));
+    }
+    card.append(left, right);
+    tb.append(card);
+  }
+  if (!rpAll && list.length > RP_SHOW) {
+    const more = el('button', 'more-btn', `Показать все (${list.length})`); more.type = 'button';
+    more.onclick = () => { rpAll = true; renderReplies(rpSent); };
+    tb.append(more);
   }
 }
+document.querySelectorAll('#rp-sort .switch-btn').forEach(b => b.addEventListener('click', () => {
+  rpSort = b.dataset.sort;
+  document.querySelectorAll('#rp-sort .switch-btn').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  renderReplies(rpSent);
+}));
 
 function renderPair(p) {
   const box = el('article', 'pair');
