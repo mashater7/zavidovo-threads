@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T07:23:04.075Z",
+  "updated": "2026-10-23T07:26:44.763Z",
   "entries": [
     {
       "id": "2026-10-21-09",
@@ -962,12 +962,16 @@
       "sent_at": "2026-10-22T13:31:49.953Z",
       "stats": {
         "views": 0,
+        "viewers": 0,
+        "profile_visits": 0,
+        "follows": 0,
         "likes": 0,
+        "replies": 0,
         "reposts": 0,
         "quotes": 0,
         "shares": 0,
-        "replies": 0,
-        "checked_at": "2026-10-23T07:22:55.582Z"
+        "sources": [],
+        "checked_at": "2026-10-23T07:26:24.803Z"
       }
     },
     {
@@ -979,10 +983,29 @@
       "sent_at": "2026-10-21T20:37:17.373Z",
       "stats": {
         "views": 25,
+        "viewers": 16,
+        "profile_visits": 8,
+        "follows": 0,
         "likes": 0,
+        "replies": 1,
         "reposts": 0,
-        "replies": 2,
-        "checked_at": "2026-10-23T07:16:04.455Z"
+        "quotes": 0,
+        "shares": 0,
+        "sources": [
+          {
+            "name": "Главная",
+            "pct": 77.78
+          },
+          {
+            "name": "Вкладка действий",
+            "pct": 11.11
+          },
+          {
+            "name": "Поиск",
+            "pct": 11.11
+          }
+        ],
+        "checked_at": "2026-10-23T07:26:36.518Z"
       }
     },
     {
@@ -994,10 +1017,25 @@
       "sent_at": "2026-10-21T19:32:12.947Z",
       "stats": {
         "views": 16,
+        "viewers": 12,
+        "profile_visits": 3,
+        "follows": 0,
         "likes": 1,
-        "reposts": 0,
         "replies": 0,
-        "checked_at": "2026-10-23T07:15:51.253Z"
+        "reposts": 0,
+        "quotes": 0,
+        "shares": 0,
+        "sources": [
+          {
+            "name": "Главная",
+            "pct": 78.57
+          },
+          {
+            "name": "Вкладка действий",
+            "pct": 21.43
+          }
+        ],
+        "checked_at": "2026-10-23T07:26:32.272Z"
       }
     },
     {
@@ -1009,10 +1047,33 @@
       "sent_at": "2026-10-21T12:54:32.992Z",
       "stats": {
         "views": 233,
+        "viewers": 186,
+        "profile_visits": 178,
+        "follows": 3,
         "likes": 5,
+        "replies": 2,
         "reposts": 0,
-        "replies": 3,
-        "checked_at": "2026-10-23T07:15:36.550Z"
+        "quotes": 0,
+        "shares": 0,
+        "sources": [
+          {
+            "name": "Главная",
+            "pct": 91.84
+          },
+          {
+            "name": "Поиск",
+            "pct": 4.76
+          },
+          {
+            "name": "Вкладка действий",
+            "pct": 2.72
+          },
+          {
+            "name": "Профиль",
+            "pct": 0.68
+          }
+        ],
+        "checked_at": "2026-10-23T07:26:28.505Z"
       }
     },
     {
@@ -1024,10 +1085,21 @@
       "sent_at": "2026-10-21T11:56:55.219Z",
       "stats": {
         "views": 90,
+        "viewers": 71,
+        "profile_visits": 6,
+        "follows": 0,
         "likes": 4,
-        "reposts": 0,
         "replies": 2,
-        "checked_at": "2026-10-23T07:15:06.915Z"
+        "reposts": 0,
+        "quotes": 0,
+        "shares": 0,
+        "sources": [
+          {
+            "name": "Главная",
+            "pct": 100
+          }
+        ],
+        "checked_at": "2026-10-23T07:26:20.546Z"
       }
     }
   ]
