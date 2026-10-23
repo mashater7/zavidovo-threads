@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T10:01:29.531Z",
+  "updated": "2026-10-23T13:10:14.614Z",
   "entries": [
     {
       "id": "2026-10-21-09",
@@ -951,17 +951,31 @@
       "reply_text": "У меня домики в Завидово с баней и чаном) \nприглашаю в гости",
       "sent_at": "2026-10-23T09:50:03.689Z",
       "stats": {
-        "views": 1,
-        "viewers": 0,
-        "profile_visits": 0,
+        "views": 7,
+        "viewers": 2,
+        "profile_visits": 19,
         "follows": 0,
         "likes": 0,
-        "replies": 0,
+        "replies": 1,
         "reposts": 0,
         "quotes": 0,
         "shares": 0,
-        "sources": [],
-        "checked_at": "2026-10-23T10:01:21.069Z"
+        "sources": [
+          {
+            "name": "Вкладка действий",
+            "pct": 100
+          }
+        ],
+        "verdicts": {
+          "views": "down",
+          "viewers": "down",
+          "profile_visits": "up",
+          "follows": "same",
+          "likes": "down",
+          "replies": "up",
+          "reposts": "same"
+        },
+        "checked_at": "2026-10-23T13:10:06.795Z"
       }
     },
     {
@@ -972,8 +986,8 @@
       "reply_text": "У меня домики в Завидово с баней и чаном) жду всех в гости.",
       "sent_at": "2026-10-22T13:31:49.953Z",
       "stats": {
-        "views": 1,
-        "viewers": 1,
+        "views": 2,
+        "viewers": 2,
         "profile_visits": 0,
         "follows": 0,
         "likes": 0,
@@ -984,10 +998,23 @@
         "sources": [
           {
             "name": "Главная",
-            "pct": 100
+            "pct": 50
+          },
+          {
+            "name": "Профиль",
+            "pct": 50
           }
         ],
-        "checked_at": "2026-10-23T10:01:17.623Z"
+        "verdicts": {
+          "views": "down",
+          "viewers": "down",
+          "profile_visits": "down",
+          "follows": "same",
+          "likes": "down",
+          "replies": "down",
+          "reposts": "same"
+        },
+        "checked_at": "2026-10-23T13:09:49.184Z"
       }
     },
     {
@@ -998,8 +1025,8 @@
       "reply_text": "сдаю домик с баней в завидово. простенькая баня, но сама в ней ни разу не парилась, хах. Гости до 120 ее разогревали. Вы с какой максимальной температурой парились?",
       "sent_at": "2026-10-21T20:37:17.373Z",
       "stats": {
-        "views": 25,
-        "viewers": 16,
+        "views": 26,
+        "viewers": 17,
         "profile_visits": 8,
         "follows": 0,
         "likes": 0,
@@ -1021,7 +1048,16 @@
             "pct": 11.11
           }
         ],
-        "checked_at": "2026-10-23T07:26:36.518Z"
+        "verdicts": {
+          "views": "down",
+          "viewers": "down",
+          "profile_visits": "same",
+          "follows": "same",
+          "likes": "down",
+          "replies": "up",
+          "reposts": "same"
+        },
+        "checked_at": "2026-10-23T13:10:02.211Z"
       }
     },
     {
@@ -1051,7 +1087,16 @@
             "pct": 21.43
           }
         ],
-        "checked_at": "2026-10-23T07:26:32.272Z"
+        "verdicts": {
+          "views": "down",
+          "viewers": "down",
+          "profile_visits": "same",
+          "follows": "same",
+          "likes": "up",
+          "replies": "down",
+          "reposts": "same"
+        },
+        "checked_at": "2026-10-23T13:09:57.781Z"
       }
     },
     {
@@ -1062,8 +1107,8 @@
       "reply_text": "У меня не отель, но вот мои домики в Завидово: есть с чаном, есть с баней",
       "sent_at": "2026-10-21T12:54:32.992Z",
       "stats": {
-        "views": 233,
-        "viewers": 186,
+        "views": 235,
+        "viewers": 188,
         "profile_visits": 178,
         "follows": 3,
         "likes": 5,
@@ -1089,7 +1134,16 @@
             "pct": 0.68
           }
         ],
-        "checked_at": "2026-10-23T07:26:28.505Z"
+        "verdicts": {
+          "views": "down",
+          "viewers": "down",
+          "profile_visits": "up",
+          "follows": "up",
+          "likes": "up",
+          "replies": "down",
+          "reposts": "same"
+        },
+        "checked_at": "2026-10-23T13:09:53.322Z"
       }
     },
     {
@@ -1115,7 +1169,16 @@
             "pct": 100
           }
         ],
-        "checked_at": "2026-10-23T07:26:20.546Z"
+        "verdicts": {
+          "views": "down",
+          "viewers": "down",
+          "profile_visits": "same",
+          "follows": "same",
+          "likes": "up",
+          "replies": "up",
+          "reposts": "same"
+        },
+        "checked_at": "2026-10-23T13:09:42.721Z"
       }
     }
   ]

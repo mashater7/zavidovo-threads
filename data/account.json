@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-23T10:01:26.112Z",
+  "checked_at": "2026-10-23T13:10:11.192Z",
   "period": "Последние 30 дней",
   "views": 14417,
   "viewers": 8534,
@@ -232,5 +232,11 @@
       "time": "12 PM - 3 PM",
       "viewers": 4099
     }
-  ]
+  ],
+  "change": {
+    "views": 25193,
+    "viewers": 30378.6,
+    "followers_net": 21.6,
+    "interactions": 0
+  }
 }
