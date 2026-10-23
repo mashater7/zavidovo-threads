@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T09:24:22.844Z",
+  "updated": "2026-10-23T10:01:29.531Z",
   "entries": [
     {
       "id": "2026-10-21-09",
@@ -682,16 +682,6 @@
       "photos": 9
     },
     {
-      "id": "2026-10-23-03",
-      "kind": "request",
-      "post_url": "https://www.threads.com/@yulisense.ii/post/De0KO4LDA9g",
-      "author": "@yulisense.ii",
-      "post_text": "Москва и МО. Подскажите где можно снять домик на сутки (типа а-фрейм глэмпинг) с чаном ?\nИщу новые места)\n1\n6\n1",
-      "post_date": "2026-10-22",
-      "reply_text": "У меня домики в Завидово с баней и чаном) \nприглашаю в гости",
-      "photos": 9
-    },
-    {
       "id": "2026-10-23-04",
       "kind": "self_promo",
       "post_url": "https://www.threads.com/@anna_malohvey/post/De0-kptFp2b",
@@ -954,14 +944,14 @@
   ],
   "sent": [
     {
-      "id": "2026-10-21-24",
-      "author": "@life.eco.work",
-      "post_url": "https://www.threads.com/@life.eco.work/post/Detg3VVCKP-",
-      "reply_url": "https://www.threads.com/@zavidovobarn/post/DezGKXdiBh-",
-      "reply_text": "У меня домики в Завидово с баней и чаном) жду всех в гости.",
-      "sent_at": "2026-10-22T13:31:49.953Z",
+      "id": "2026-10-23-03",
+      "author": "@yulisense.ii",
+      "post_url": "https://www.threads.com/@yulisense.ii/post/De0KO4LDA9g",
+      "reply_url": "https://www.threads.com/@zavidovobarn/post/De1RkzaCHh7",
+      "reply_text": "У меня домики в Завидово с баней и чаном) \nприглашаю в гости",
+      "sent_at": "2026-10-23T09:50:03.689Z",
       "stats": {
-        "views": 0,
+        "views": 1,
         "viewers": 0,
         "profile_visits": 0,
         "follows": 0,
@@ -971,7 +961,33 @@
         "quotes": 0,
         "shares": 0,
         "sources": [],
-        "checked_at": "2026-10-23T07:26:24.803Z"
+        "checked_at": "2026-10-23T10:01:21.069Z"
+      }
+    },
+    {
+      "id": "2026-10-21-24",
+      "author": "@life.eco.work",
+      "post_url": "https://www.threads.com/@life.eco.work/post/Detg3VVCKP-",
+      "reply_url": "https://www.threads.com/@zavidovobarn/post/DezGKXdiBh-",
+      "reply_text": "У меня домики в Завидово с баней и чаном) жду всех в гости.",
+      "sent_at": "2026-10-22T13:31:49.953Z",
+      "stats": {
+        "views": 1,
+        "viewers": 1,
+        "profile_visits": 0,
+        "follows": 0,
+        "likes": 0,
+        "replies": 0,
+        "reposts": 0,
+        "quotes": 0,
+        "shares": 0,
+        "sources": [
+          {
+            "name": "Главная",
+            "pct": 100
+          }
+        ],
+        "checked_at": "2026-10-23T10:01:17.623Z"
       }
     },
     {
