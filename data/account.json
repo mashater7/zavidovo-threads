@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-10-23T17:26:24.198Z",
+  "checked_at": "2026-10-23T19:34:46.214Z",
   "period": "Последние 30 дней",
   "views": 14417,
   "viewers": 8534,
-  "followers_net": 19,
+  "followers_net": 22,
   "interactions": 367,
   "links": [
     {
@@ -13,7 +13,7 @@
   ],
   "viewers_followers": 28,
   "viewers_nonfollowers": 8506,
-  "followers": 107,
+  "followers": 110,
   "viewers_demo": {
     "countries": [
       {
@@ -236,7 +236,7 @@
   "change": {
     "views": 25193,
     "viewers": 30378.6,
-    "followers_net": 21.6,
+    "followers_net": 25,
     "interactions": 0
   }
 }
