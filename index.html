@@ -58,6 +58,9 @@
   .ph-x span { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin: 3px; border-radius: 50%; background: rgba(255,255,255,.95); color: var(--red-pen); font: 700 18px/1 system-ui, sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,.35); }
   .ph-x:hover span { background: #fff; color: #B3261E; }
   .ph-back { font-size: 13px; min-height: 44px; }
+  .add-ph { display: inline-flex; align-items: center; cursor: pointer; margin-right: 16px; }
+  .add-ph:focus-within { outline: 2px solid var(--fire); outline-offset: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .skip { font: inherit; font-size: 14px; color: var(--muted); background: none; border: 0; text-decoration: underline; cursor: pointer; min-height: 44px; padding: 0 4px; }
   .pair { padding: 16px 0 20px; border-bottom: 1px solid var(--rule); }
   .pair-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
@@ -506,11 +509,11 @@ function renderPair(p) {
   return box;
 }
 
-async function send(p, text, replyUrl, btn, verdict, refresh, photos = 0) {
-  // photos — число или массив номеров оставленных фото ([1,2,5])
+async function send(p, text, replyUrl, btn, verdict, refresh, photos = 0, uploads = []) {
+  // photos — число или массив номеров оставленных фото ([1,2,5]); uploads — имена своих фото на пульте
   const payload = Array.isArray(photos)
-    ? { id: p.id, text, reply_url: replyUrl, photos: photos.length, photos_list: photos.slice() }
-    : { id: p.id, text, reply_url: replyUrl, photos };
+    ? { id: p.id, text, reply_url: replyUrl, photos: photos.length + uploads.length, photos_list: photos.slice(), uploads }
+    : { id: p.id, text, reply_url: replyUrl, photos, uploads };
   // «ОК» уходит в облачный пульт — с компьютера и с телефона одинаково
   btn.disabled = true; verdict.className = 'verdict'; verdict.textContent = 'Отправляю в Threads…';
   // пока пульт работает, показываем, на каком он шаге
@@ -556,30 +559,48 @@ function renderAnswer(e) {
   const all = Array.from({ length: e.photos || 0 }, (_, i) => i + 1);
   let kept = all;
   try { const v = JSON.parse(store.get('ph-' + e.id) || 'null'); if (Array.isArray(v)) kept = all.filter(n => v.includes(n)); } catch {}
+  // свои фото: загружены на облачный пульт, здесь храним их имена по id поста
+  let added = [];
+  try { const v = JSON.parse(store.get('up-' + e.id) || '[]'); if (Array.isArray(v)) added = v; } catch {}
+  const total = () => kept.length + added.length;
   const ok = el('button', 'ok-btn'); ok.type = 'button';
-  const okLabel = () => { ok.textContent = !e.photos ? 'ОК' : kept.length ? `ОК — ответить с ${kept.length} фото` : 'ОК — ответить без фото'; };
-  if (e.photos) {
-    const ph = el('div', 'photos');
-    const back = el('button', 'copy ph-back', 'вернуть все фото'); back.type = 'button';
-    const drawPhotos = () => {
-      ph.textContent = '';
-      for (const i of kept) {
-        const wrap = el('div', 'ph');
-        const img = el('img'); img.src = 'photos/' + String(i).padStart(2, '0') + '.jpg'; img.alt = 'Фото ' + i; img.loading = 'lazy'; img.width = 64; img.height = 64;
-        const x = el('button', 'ph-x'); x.type = 'button'; x.setAttribute('aria-label', 'Убрать фото ' + i); x.append(el('span', null, '×'));
-        x.onclick = () => { kept = kept.filter(n => n !== i); save(); };
-        wrap.append(img, x); ph.append(wrap);
-      }
-      ph.hidden = !kept.length;
-      back.hidden = kept.length === all.length;
-      okLabel();
-    };
-    const save = () => { store.set('ph-' + e.id, kept.length === all.length ? '' : JSON.stringify(kept)); drawPhotos(); };
-    back.onclick = () => { kept = all; save(); };
-    drawPhotos();
-    box.append(ph, back);
-  }
-  okLabel();
+  const okLabel = () => { ok.textContent = total() ? `ОК — ответить с ${total()} фото` : 'ОК — ответить без фото'; };
+  const ph = el('div', 'photos');
+  const back = el('button', 'copy ph-back', 'вернуть все фото'); back.type = 'button';
+  const addPh = el('label', 'copy add-ph', '+ Добавить свои фото');
+  const inp = el('input', 'sr-only'); inp.type = 'file'; inp.accept = 'image/*'; inp.multiple = true; addPh.append(inp);
+  const phNote = el('p', 'verdict'); phNote.setAttribute('aria-live', 'polite');
+  const tile = (src, alt, onRemove) => {
+    const wrap = el('div', 'ph');
+    const img = el('img'); img.src = src; img.alt = alt; img.loading = 'lazy'; img.width = 64; img.height = 64;
+    const x = el('button', 'ph-x'); x.type = 'button'; x.setAttribute('aria-label', 'Убрать: ' + alt); x.append(el('span', null, '×'));
+    x.onclick = onRemove; wrap.append(img, x); return wrap;
+  };
+  const drawPhotos = () => {
+    ph.textContent = '';
+    for (const i of kept) ph.append(tile('photos/' + String(i).padStart(2, '0') + '.jpg', 'Фото ' + i, () => { kept = kept.filter(n => n !== i); save(); }));
+    for (const f of added) ph.append(tile(PULT + '/api/photo/' + f + '?k=' + encodeURIComponent(store.get('pult-key')), 'Своё фото', () => { added = added.filter(x => x !== f); save(); }));
+    ph.hidden = !total();
+    back.hidden = kept.length === all.length;
+    addPh.hidden = total() >= MAX_PHOTOS;
+    okLabel();
+  };
+  const save = () => { store.set('ph-' + e.id, kept.length === all.length ? '' : JSON.stringify(kept)); store.set('up-' + e.id, added.length ? JSON.stringify(added) : ''); drawPhotos(); };
+  back.onclick = () => { kept = all; save(); };
+  inp.onchange = async () => {
+    const files = [...inp.files].slice(0, MAX_PHOTOS - total()); inp.value = '';
+    for (const [k, f] of files.entries()) {
+      phNote.className = 'verdict'; phNote.textContent = `Загружаю фото ${k + 1} из ${files.length}…`;
+      try {
+        const r = await pultFetch('/api/upload', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: await shrinkPhoto(f) }) });
+        const j = await r.json(); if (!r.ok) throw new Error(j.error || r.status);
+        added.push(j.file); save();
+      } catch (err) { phNote.className = 'verdict no'; phNote.textContent = 'Фото не загрузилось: ' + (err.message || err); return; }
+    }
+    phNote.textContent = '';
+  };
+  drawPhotos();
+  box.append(ph, back, addPh, phNote);
   const row = el('div', 'row');
   const skip = el('button', 'skip', 'Пропустить'); skip.type = 'button';
   row.append(ok, skip);
@@ -599,10 +620,24 @@ function renderAnswer(e) {
     ok.disabled = !v.ok;
   }
   ta.oninput = refresh;
-  ok.onclick = () => send(e, ta.value.trim(), e.post_url, ok, verdict, refresh, e.photos ? kept.slice() : 0);
-  skip.onclick = () => { store.set('skip-' + e.id, '1'); box.remove(); countAnswers(); };
+  ok.onclick = () => send(e, ta.value.trim(), e.post_url, ok, verdict, refresh, kept.slice(), added.slice());
+  // пропуск — на сервер, чтобы пост пропал и на телефоне (раньше помнил только этот браузер)
+  skip.onclick = () => { store.set('skip-' + e.id, '1'); box.remove(); countAnswers(); skipOnPult(e.id); };
   box.refresh = refresh;
   return box;
+}
+
+const skipOnPult = id => pultFetch('/api/skip', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
+  .then(r => { if (r.ok) store.set('skip-' + id, ''); }).catch(() => {});   // не вышло — флаг останется и уйдёт при следующем открытии
+
+const MAX_PHOTOS = 20;   // столько вложений Threads принимает в одном посте
+// Фото с телефона весит 3–8 МБ: уменьшаем до 1440 px по длинной стороне (столько показывает Threads) и сжимаем в JPEG
+async function shrinkPhoto(file) {
+  const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
+  const k = Math.min(1, 1440 / Math.max(bmp.width, bmp.height));
+  const cv = document.createElement('canvas'); cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k);
+  cv.getContext('2d').drawImage(bmp, 0, 0, cv.width, cv.height);
+  return cv.toDataURL('image/jpeg', 0.85);
 }
 
 function countAnswers() { $('n-answers').textContent = answers.entries.filter(e => !store.get('skip-' + e.id)).length || ''; }
@@ -742,6 +777,8 @@ if (docs.changed) { const n = $('docs-note'); n.hidden = false; n.textContent = 
 $('n-posts').textContent = pairs.length;
 const weight = p => p.topic === 'другое' ? -1 : (topics.topics.find(t => t.key === p.topic) || { count: 0 }).count;
 pairs.sort((a, b) => weight(b) - weight(a)).forEach(p => { const box = renderPair(p); $('posts').append(box); box.refresh(); });
+// пропуски, нажатые раньше только в этом браузере, отправляем на сервер — тогда они пропадут и на телефоне
+for (const e of answers.entries) if (store.get("skip-" + e.id)) skipOnPult(e.id);
 renderAnswers();
 initPult();
 renderTopics(); renderLog(); initTabs();
