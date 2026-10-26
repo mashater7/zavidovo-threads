@@ -649,8 +649,13 @@ function renderAnswer(e) {
   return box;
 }
 
-const skipOnPult = id => pultFetch('/api/skip', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
-  .then(r => { if (r.ok) store.set('skip-' + id, ''); }).catch(() => {});   // не вышло — флаг останется и уйдёт при следующем открытии
+const skipOnPult = id => {
+  // пост убираем из списка в памяти страницы: раньше после ответа сервера стиралась только пометка,
+  // и при переключении «Целевые / Самореклама» пропущенные посты возвращались (26.10, воспроизведено в Safari)
+  answers.entries = answers.entries.filter(x => x.id !== id);
+  return pultFetch('/api/skip', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
+    .then(r => { if (r.ok) store.set('skip-' + id, ''); }).catch(() => {});   // не вышло — пометка останется и уйдёт при следующем открытии
+};
 
 const MAX_PHOTOS = 20;   // столько вложений Threads принимает в одном посте
 // Фото с телефона весит 3–8 МБ: уменьшаем до 1440 px по длинной стороне (столько показывает Threads) и сжимаем в JPEG
