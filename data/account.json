@@ -1,8 +1,8 @@
 {
-  "checked_at": "2026-10-25T11:29:17.088Z",
+  "checked_at": "2026-10-26T07:21:40.610Z",
   "period": "Последние 30 дней",
-  "views": 15562,
-  "viewers": 9379,
+  "views": 15609,
+  "viewers": 9400,
   "followers_net": 22,
   "interactions": 379,
   "links": [
@@ -11,8 +11,8 @@
       "clicks": 33
     }
   ],
-  "viewers_followers": 28,
-  "viewers_nonfollowers": 9351,
+  "viewers_followers": 30,
+  "viewers_nonfollowers": 9370,
   "followers": 110,
   "viewers_demo": {
     "countries": [
@@ -145,7 +145,7 @@
         "pct": 3.64
       },
       {
-        "name": "Новосибирск, Новосибирская обл.",
+        "name": "Чита",
         "pct": 2.73
       }
     ],
@@ -197,23 +197,23 @@
   "interests": [
     {
       "name": "Photographers of Threads",
-      "n": 191
+      "n": 194
     },
     {
       "name": "Путешествия",
-      "n": 169
+      "n": 175
     },
     {
       "name": "фотография",
-      "n": 138
+      "n": 140
     },
     {
       "name": "фотограф",
-      "n": 135
+      "n": 136
     },
     {
-      "name": "Travel Threads",
-      "n": 99
+      "name": "Dating Threads",
+      "n": 108
     }
   ],
   "peak": [
@@ -234,8 +234,8 @@
     }
   ],
   "change": {
-    "views": 33010.6,
-    "viewers": 35973.1,
+    "views": 31755.1,
+    "viewers": 34714.8,
     "followers_net": 25,
     "interactions": 0
   }

@@ -280,9 +280,18 @@ const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls)
 const PULT = 'https://72-56-123-163.sslip.io';
 { const m = /[#&]k=([\w-]+)/.exec(location.hash); if (m) { store.set('pult-key', m[1]); history.replaceState(null, '', location.pathname + location.search); } }
 const pultFetch = (path, opt = {}) => fetch(PULT + path, { ...opt, cache: 'no-store', headers: { ...(opt.headers || {}), 'X-Pult-Key': store.get('pult-key') } });
-// данные — свежие от пульта; если он недоступен, то копия с GitHub Pages
-const json = f => pultFetch('/api/' + f).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .catch(() => fetch(f + '?t=' + Date.now()).then(r => r.json()));
+// Данные — только от пульта, с тремя попытками. Копию с GitHub берём лишь для неизменных файлов (правила, пары, темы):
+// 26.10 сайт при секундном сбое молча показывал застывшую копию от 25.10 — с уже отвеченными и пропущенными постами
+const LIVE = ['data/answers.json', 'data/log.json', 'data/account.json'];
+let dataStale = false;
+async function json(f) {
+  for (let i = 0; i < 3; i++) {
+    try { const r = await pultFetch('/api/' + f); if (r.ok) return await r.json(); } catch {}
+    await new Promise(res => setTimeout(res, 1500));
+  }
+  if (LIVE.includes(f)) { dataStale = true; throw new Error('пульт не ответил'); }
+  return (await fetch(f + '?t=' + Date.now())).json();
+}
 
 let rules, docs, log = [], topics, account;
 
@@ -806,6 +815,7 @@ const [pairs] = await Promise.all([
   json('data/account.json').then(x => account = x).catch(() => {}),
 ]);
 log = await freshLog().catch(() => []);
+if (dataStale) { const n = $('docs-note'); n.hidden = false; n.textContent = 'Не удалось загрузить посты с сервера — обнови страницу через минуту. Старые данные не показываю, чтобы не было уже отвеченных постов.'; }
 if (docs.changed) { const n = $('docs-note'); n.hidden = false; n.textContent = 'Документация Threads изменилась ' + (docs.since || '') + '. Публикация на паузе, пока правила не сверят.'; }
 $('n-posts').textContent = pairs.length;
 const weight = p => p.topic === 'другое' ? -1 : (topics.topics.find(t => t.key === p.topic) || { count: 0 }).count;
