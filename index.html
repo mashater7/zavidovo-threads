@@ -633,11 +633,15 @@ const skipOnPult = id => pultFetch('/api/skip', { method: 'POST', headers: { 'Co
 const MAX_PHOTOS = 20;   // столько вложений Threads принимает в одном посте
 // Фото с телефона весит 3–8 МБ: уменьшаем до 1440 px по длинной стороне (столько показывает Threads) и сжимаем в JPEG
 async function shrinkPhoto(file) {
-  const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
-  const k = Math.min(1, 1440 / Math.max(bmp.width, bmp.height));
-  const cv = document.createElement('canvas'); cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k);
-  cv.getContext('2d').drawImage(bmp, 0, 0, cv.width, cv.height);
-  return cv.toDataURL('image/jpeg', 0.85);
+  // через <img>: работает и в Safari на iPhone (createImageBitmap с настройками там падал); поворот по EXIF браузер учитывает сам
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((ok, fail) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => fail(new Error('телефон не смог открыть это фото')); i.src = url; });
+    const k = Math.min(1, 1440 / Math.max(img.naturalWidth, img.naturalHeight));
+    const cv = document.createElement('canvas'); cv.width = Math.round(img.naturalWidth * k); cv.height = Math.round(img.naturalHeight * k);
+    cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+    return cv.toDataURL('image/jpeg', 0.85);
+  } finally { URL.revokeObjectURL(url); }
 }
 
 function countAnswers() { $('n-answers').textContent = answers.entries.filter(e => !store.get('skip-' + e.id)).length || ''; }
