@@ -67,6 +67,10 @@
   .pult-now:empty { display: none; }
   @keyframes pulse { 50% { opacity: .35; } }
   @media (prefers-reduced-motion: reduce) { .pult-now.busy::before { animation: none; } }
+  .idea-why { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+  .older-ideas { margin: 20px 0 8px; }
+  .older-ideas summary { cursor: pointer; color: var(--pen); min-height: 44px; display: flex; align-items: center; font-weight: 700; }
+  .perm-h { margin-top: 28px; }
   .add-ph { display: inline-flex; align-items: center; cursor: pointer; margin-right: 16px; }
   .add-ph:focus-within { outline: 2px solid var(--fire); outline-offset: 2px; }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -477,6 +481,38 @@ document.querySelectorAll('#rp-sort .switch-btn').forEach(b => b.addEventListene
   renderReplies(rpSent);
 }));
 
+// Идеи дня (облачная задача Claude, каждое утро): 5 пар «негатив / позитив» и 5 постов для @zavidovobarn.
+// Сверху сегодняшние, ниже свёрнуто — прошлые дни, ещё ниже — постоянные пары из pairs.json
+const dayName = d => new Date(d + 'T12:00:00').toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', weekday: 'long' });
+function renderIdeaPost(p) {
+  const box = el('article', 'pair');
+  box.append(el('span', 'label', 'Пост для @zavidovobarn'), el('p', 'neg', p.text));
+  if (p.why) box.append(el('p', 'idea-why', p.why));
+  const copy = el('button', 'copy', 'Скопировать'); copy.type = 'button';
+  copy.onclick = () => navigator.clipboard.writeText(p.text).then(() => { copy.textContent = 'Скопировано'; setTimeout(() => copy.textContent = 'Скопировать', 1500); });
+  box.append(copy);
+  return box;
+}
+function renderIdeaDay(day, into) {
+  into.append(el('h3', 'acct-h', 'Пары негатив / позитив'));
+  for (const p of day.pairs || []) { const b = renderPair(p); into.append(b); b.refresh(); }
+  into.append(el('h3', 'acct-h', 'Посты для @zavidovobarn'));
+  for (const p of day.posts || []) into.append(renderIdeaPost(p));
+}
+function renderIdeas() {
+  const box = $('posts'), [day, ...older] = ideas.days || [];
+  if (!day) return;
+  box.append(el('h2', null, 'Идеи на ' + dayName(day.date)),
+    el('p', 'sub', 'Каждое утро Claude пишет 5 пар и 5 постов по свежим жалобам гостей. Негатив постишь сама с личного аккаунта, позитив уходит по «ОК», пост для @zavidovobarn — копируешь.'));
+  renderIdeaDay(day, box);
+  if (older.length) {
+    const det = el('details', 'older-ideas'); det.append(el('summary', null, `Прошлые идеи (${older.length} дн.)`));
+    for (const d of older) { det.append(el('h2', null, dayName(d.date))); renderIdeaDay(d, det); }
+    box.append(det);
+  }
+  box.append(el('h2', 'perm-h', 'Постоянные пары'));
+}
+
 function renderPair(p) {
   const box = el('article', 'pair');
   const head = el('div', 'pair-head');
@@ -810,9 +846,11 @@ function initTabs() {
 }
 
 
-let answers;
+let answers, ideas = { days: [] };
 const [pairs] = await Promise.all([
   json('data/pairs.json'),
+  // идеи пишет облачная задача Claude прямо в GitHub каждое утро — берём файл с сайта, а не у пульта
+  fetch('data/ideas.json?t=' + Date.now()).then(r => r.json()).then(x => ideas = x).catch(() => {}),
   json('data/answers.json').catch(() => ({ entries: [], sent: [] })).then(x => answers = x),
   json('data/rules.json').then(x => rules = x),
   json('data/docs-status.json').then(x => docs = x),
@@ -822,7 +860,9 @@ const [pairs] = await Promise.all([
 log = await freshLog().catch(() => []);
 if (dataStale) { const n = $('docs-note'); n.hidden = false; n.textContent = 'Не удалось загрузить посты с сервера — обнови страницу через минуту. Старые данные не показываю, чтобы не было уже отвеченных постов.'; }
 if (docs.changed) { const n = $('docs-note'); n.hidden = false; n.textContent = 'Документация Threads изменилась ' + (docs.since || '') + '. Публикация на паузе, пока правила не сверят.'; }
-$('n-posts').textContent = pairs.length;
+const today = (ideas.days || [])[0];
+$('n-posts').textContent = (today ? today.pairs.length + today.posts.length : 0) || pairs.length;
+renderIdeas();
 const weight = p => p.topic === 'другое' ? -1 : (topics.topics.find(t => t.key === p.topic) || { count: 0 }).count;
 pairs.sort((a, b) => weight(b) - weight(a)).forEach(p => { const box = renderPair(p); $('posts').append(box); box.refresh(); });
 // пропуски, нажатые раньше только в этом браузере, отправляем на сервер — тогда они пропадут и на телефоне
