@@ -58,6 +58,15 @@
   .ph-x span { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin: 3px; border-radius: 50%; background: rgba(255,255,255,.95); color: var(--red-pen); font: 700 18px/1 system-ui, sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,.35); }
   .ph-x:hover span { background: #fff; color: #B3261E; }
   .ph-back { font-size: 13px; min-height: 44px; }
+  .pult-now { margin: -6px 0 14px; font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; min-height: 20px; }
+  .pult-now::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #2F7A45; flex: none; }
+  .pult-now.busy { color: var(--pen); font-weight: 700; }
+  .pult-now.busy::before { background: var(--fire); animation: pulse 1.4s ease-in-out infinite; }
+  .pult-now.off { color: var(--red-pen); }
+  .pult-now.off::before { background: var(--red-pen); }
+  .pult-now:empty { display: none; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .pult-now.busy::before { animation: none; } }
   .add-ph { display: inline-flex; align-items: center; cursor: pointer; margin-right: 16px; }
   .add-ph:focus-within { outline: 2px solid var(--fire); outline-offset: 2px; }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -203,6 +212,7 @@
   <h1>Посты для Threads</h1>
   <p class="sub">«Ответы» — найденные посты, где ищут дом или рекламируются: ответ с фото уходит по «ОК». «Посты» — негатив постишь сама, позитив уходит по «ОК».</p>
   <p class="note err" id="docs-note" hidden></p>
+  <p class="pult-now" id="pult-now" aria-live="polite"></p>
 
   <nav class="tabs" aria-label="Разделы">
     <button class="tab" data-tab="answers" aria-pressed="true">Ответы <span id="n-answers"></span></button>
@@ -699,7 +709,23 @@ async function runPult(path, btn, note) {
       : 'Не получилось: ' + e.message;
   } finally { btn.disabled = false; }
 }
+// Строка «Пульт сейчас…» на всех вкладках: видно и то, что запущено по расписанию или с другого устройства
+const TASK = { 'поиск': 'ищу новые посты', 'ищу посты': 'ищу новые посты', 'аналитика': 'обновляю цифры', 'собираю цифры': 'обновляю цифры',
+  'отзывы': 'проверяю отзывы', 'обновляю отзывы': 'проверяю отзывы', 'отправка': 'отправляю ответ' };
+async function pultNow() {
+  const box = $('pult-now');
+  try {
+    const st = await (await pultFetch('/api/status')).json();
+    const parts = [];
+    if (st.send) parts.push('отправляю ответ — ' + st.send.step);
+    if (st.busy) parts.push((TASK[st.task] || st.task || 'работаю') + (st.progress ? ' — ' + st.progress : ''));
+    box.className = 'pult-now' + (parts.length ? ' busy' : '');
+    box.textContent = parts.length ? 'Пульт сейчас: ' + parts.join('; ') + '…' : 'Пульт свободен';
+  } catch { box.className = 'pult-now off'; box.textContent = 'Пульт не отвечает — проверь интернет'; }
+}
+
 function initPult() {
+  pultNow(); setInterval(pultNow, 5000);
   $('btn-search').onclick = () => runPult('/api/search', $('btn-search'), $('answers-sub'));
   $('btn-stats').onclick = () => runPult('/api/stats', $('btn-stats'), $('log-sub'));
   $('btn-reviews').onclick = runReviews;
