@@ -1,1 +1,7 @@
-{}
+{
+  "https://developers.facebook.com/docs/threads/posts": "e0323dda0ced2f4f579429d542b29108661a071fc2321ee5940a2a4e37a72d59",
+  "https://developers.facebook.com/docs/threads/reply-management": "4f18a17f508ee660ede415a916ac126a93a1e4618e284a41868836ae828af082",
+  "https://developers.facebook.com/docs/threads/troubleshooting": "ec80718649701dbd5fd094eef88c5e350cf0205e79e7ce2d45b308a0267d7454",
+  "https://transparency.meta.com/policies/community-standards/inauthentic-behavior/": "4cf7deae35a20dc1253c0087623174c6a1d52a9606fc3722f37f623c11bc3fb9",
+  "https://transparency.meta.com/policies/community-standards/spam/": "a064f959a5543e5b9a0911191967a3230ce5f56fc682f56b91a83f295be692b5"
+}
