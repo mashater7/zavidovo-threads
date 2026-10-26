@@ -743,7 +743,8 @@ async function runPult(path, btn, note) {
   try {
     const r = await pultFetch(path, { method: 'POST' });
     if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || 'Пульт ответил ' + r.status); }
-    note.textContent = 'Запустила…';
+    const started = await r.json().catch(() => ({}));
+    note.textContent = started.position ? `Пульт занят — встала в очередь (${started.position}-я), начну сама…` : 'Запустила…';
     for (;;) {
       await new Promise(res => setTimeout(res, 3000));
       const st = await (await pultFetch('/api/status')).json();
@@ -768,7 +769,8 @@ async function pultNow() {
     const st = await (await pultFetch('/api/status')).json();
     const parts = [];
     if (st.send) parts.push('отправляю ответ — ' + st.send.step);
-    if (st.busy) parts.push((TASK[st.task] || st.task || 'работаю') + (st.progress ? ' — ' + st.progress : ''));
+    if (st.busy && (st.task || !(st.waiting && st.waiting.length))) parts.push((TASK[st.task] || st.task || 'работаю') + (st.progress ? ' — ' + st.progress : ''));
+    if (st.waiting && st.waiting.length) parts.push('дальше: ' + st.waiting.map(t => TASK[t] || t).join(', '));
     box.className = 'pult-now' + (parts.length ? ' busy' : '');
     box.textContent = parts.length ? 'Пульт сейчас: ' + parts.join('; ') + '…' : 'Пульт свободен';
   } catch { box.className = 'pult-now off'; box.textContent = 'Пульт не отвечает — проверь интернет'; }
