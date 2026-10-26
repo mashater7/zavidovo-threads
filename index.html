@@ -531,9 +531,12 @@ async function send(p, text, replyUrl, btn, verdict, refresh, photos = 0, upload
     const msg = j.message || j.error || 'Пульт не ответил';
     const sent = /^Опубликовано/.test(msg);
     if (sent) log.unshift({ id: p.id, text, replyUrl, ok: true, at: new Date().toISOString() });
-    verdict.className = 'verdict ' + (sent ? 'yes' : 'no'); verdict.textContent = msg;
-    btn.disabled = sent; renderLog();
+    renderLog();
+    // сначала обновляем остальные карточки, потом пишем ответ пульта: раньше refresh() тут же затирал его
+    // («Не отправлено…», «БЕЗ фото ⚠️» исчезали, оставалось «Правила в порядке») — 26.10 нашла проверка в Safari
     document.querySelectorAll('.pair').forEach(b => b.refresh && b.refresh());
+    verdict.className = 'verdict ' + (sent && !/БЕЗ фото/.test(msg) ? 'yes' : 'no'); verdict.textContent = msg;
+    btn.disabled = sent;
   } catch {
     clearInterval(tick);
     verdict.className = 'verdict no'; verdict.textContent = 'Облачный пульт не ответил — ничего не отправлено. Проверь интернет и нажми ещё раз через минуту.';
