@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-10-26T23:15:26.156Z",
+  "checked_at": "2026-10-27T07:13:41.752Z",
   "period": "Последние 30 дней",
-  "views": 15609,
-  "viewers": 9400,
+  "views": 15696,
+  "viewers": 9411,
   "followers_net": 22,
-  "interactions": 379,
+  "interactions": 384,
   "links": [
     {
       "title": "Забронировать домик",
@@ -12,7 +12,7 @@
     }
   ],
   "viewers_followers": 30,
-  "viewers_nonfollowers": 9370,
+  "viewers_nonfollowers": 9381,
   "followers": 110,
   "viewers_demo": {
     "countries": [
@@ -204,7 +204,7 @@
       "n": 177
     },
     {
-      "name": "фотография",
+      "name": "Фотография",
       "n": 140
     },
     {
@@ -234,8 +234,8 @@
     }
   ],
   "change": {
-    "views": 31755.1,
-    "viewers": 34714.8,
+    "views": 31932.7,
+    "viewers": 34755.6,
     "followers_net": 25,
     "interactions": 0
   }
