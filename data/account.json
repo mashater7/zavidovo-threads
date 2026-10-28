@@ -1,19 +1,14 @@
 {
-  "checked_at": "2026-10-27T07:13:41.752Z",
+  "checked_at": "2026-10-28T07:13:20.737Z",
   "period": "Последние 30 дней",
-  "views": 15696,
+  "views": 15705,
   "viewers": 9411,
-  "followers_net": 22,
-  "interactions": 384,
-  "links": [
-    {
-      "title": "Забронировать домик",
-      "clicks": 33
-    }
-  ],
+  "followers_net": 20,
+  "interactions": 385,
+  "links": [],
   "viewers_followers": 30,
   "viewers_nonfollowers": 9381,
-  "followers": 110,
+  "followers": 109,
   "viewers_demo": {
     "countries": [
       {
@@ -108,100 +103,100 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 64.55
+        "pct": 64.22
       },
       {
         "name": "Казахстан",
-        "pct": 11.82
+        "pct": 11.93
       },
       {
         "name": "Украина",
-        "pct": 4.55
+        "pct": 4.59
       },
       {
         "name": "Беларусь",
-        "pct": 4.55
+        "pct": 4.59
       },
       {
         "name": "Германия",
-        "pct": 1.82
+        "pct": 1.83
       }
     ],
     "cities": [
       {
         "name": "Москва",
-        "pct": 10
+        "pct": 11.01
       },
       {
         "name": "Алма-Ата",
-        "pct": 4.55
+        "pct": 4.59
       },
       {
         "name": "Санкт-Петербург",
-        "pct": 3.64
+        "pct": 4.59
       },
       {
-        "name": "Новая Усмань",
-        "pct": 3.64
+        "name": "Ростов-на-Дону",
+        "pct": 2.75
       },
       {
-        "name": "Чита",
-        "pct": 2.73
+        "name": "Новосибирск, Новосибирская обл.",
+        "pct": 1.83
       }
     ],
     "age": [
       {
         "name": "13 – 17",
-        "pct": 0.92
+        "pct": 0.93
       },
       {
         "name": "18 – 24",
-        "pct": 13.76
+        "pct": 13.89
       },
       {
         "name": "25 – 34",
-        "pct": 39.45
+        "pct": 39.81
       },
       {
         "name": "35 – 44",
-        "pct": 33.03
+        "pct": 33.33
       },
       {
         "name": "45 – 54",
-        "pct": 4.59
+        "pct": 4.63
       },
       {
         "name": "55 – 64",
-        "pct": 4.59
+        "pct": 4.63
       },
       {
         "name": "65+",
-        "pct": 3.67
+        "pct": 2.78
       }
     ],
     "gender": [
       {
         "name": "Женский",
-        "pct": 54.13
+        "pct": 53.7
       },
       {
         "name": "Мужской",
-        "pct": 22.94
+        "pct": 23.15
       },
       {
         "name": "Другое",
-        "pct": 22.94
+        "pct": 23.15
       }
     ]
   },
   "interests": [
     {
       "name": "Photographers of Threads",
-      "n": 196
+      "n": 197
     },
     {
       "name": "Путешествия",
-      "n": 177
+      "n": 178
     },
     {
       "name": "Фотография",
@@ -213,7 +208,7 @@
     },
     {
       "name": "Dating Threads",
-      "n": 108
+      "n": 109
     }
   ],
   "peak": [
@@ -234,9 +229,9 @@
     }
   ],
   "change": {
-    "views": 31932.7,
-    "viewers": 34755.6,
-    "followers_net": 25,
+    "views": 36423.3,
+    "viewers": 39112.5,
+    "followers_net": 22.5,
     "interactions": 0
   }
 }
