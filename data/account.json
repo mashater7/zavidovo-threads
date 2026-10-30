@@ -1,13 +1,18 @@
 {
-  "checked_at": "2026-10-29T07:13:46.058Z",
+  "checked_at": "2026-10-30T07:12:53.858Z",
   "period": "Последние 30 дней",
-  "views": 15723,
-  "viewers": 9415,
+  "views": 20023,
+  "viewers": 11983,
   "followers_net": 20,
-  "interactions": 385,
-  "links": [],
-  "viewers_followers": 30,
-  "viewers_nonfollowers": 9385,
+  "interactions": 451,
+  "links": [
+    {
+      "title": "Забронировать домик",
+      "clicks": 33
+    }
+  ],
+  "viewers_followers": 52,
+  "viewers_nonfollowers": 11931,
   "followers": 109,
   "viewers_demo": {
     "countries": [
@@ -103,45 +108,45 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 64.22
+        "pct": 50.72
       },
       {
         "name": "Казахстан",
-        "pct": 11.93
+        "pct": 9.42
       },
       {
         "name": "Украина",
-        "pct": 4.59
+        "pct": 3.62
       },
       {
         "name": "Беларусь",
-        "pct": 4.59
+        "pct": 3.62
       },
       {
         "name": "Германия",
-        "pct": 1.83
+        "pct": 1.45
       }
     ],
     "cities": [
       {
         "name": "Москва",
-        "pct": 11.01
+        "pct": 8.7
       },
       {
         "name": "Алма-Ата",
-        "pct": 4.59
+        "pct": 3.62
       },
       {
         "name": "Санкт-Петербург",
-        "pct": 4.59
+        "pct": 3.62
       },
       {
         "name": "Ростов-на-Дону",
-        "pct": 2.75
+        "pct": 2.17
       },
       {
-        "name": "Караганда",
-        "pct": 1.83
+        "name": "Новая Усмань",
+        "pct": 1.45
       }
     ],
     "age": [
@@ -192,11 +197,11 @@
   "interests": [
     {
       "name": "Photographers of Threads",
-      "n": 198
+      "n": 199
     },
     {
       "name": "Путешествия",
-      "n": 178
+      "n": 179
     },
     {
       "name": "Фотография",
@@ -215,7 +220,7 @@
     {
       "day": "Wednesday",
       "time": "6 PM - 9 PM",
-      "viewers": 4419
+      "viewers": 4385
     },
     {
       "day": "Thursday",
@@ -229,8 +234,8 @@
     }
   ],
   "change": {
-    "views": 35634.1,
-    "viewers": 37560,
+    "views": 45406.8,
+    "viewers": 47832,
     "followers_net": 22.5,
     "interactions": 0
   }
