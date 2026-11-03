@@ -1,14 +1,19 @@
 {
-  "checked_at": "2026-11-02T07:14:08.347Z",
+  "checked_at": "2026-11-03T07:13:31.368Z",
   "period": "Последние 30 дней",
-  "views": 28396,
-  "viewers": 17328,
-  "followers_net": 98,
+  "views": 28438,
+  "viewers": 17335,
+  "followers_net": 97,
   "interactions": 550,
-  "links": [],
+  "links": [
+    {
+      "title": "Забронировать домик",
+      "clicks": 101
+    }
+  ],
   "viewers_followers": 95,
-  "viewers_nonfollowers": 17233,
-  "followers": 185,
+  "viewers_nonfollowers": 17240,
+  "followers": 184,
   "viewers_demo": {
     "countries": [
       {
@@ -103,104 +108,104 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 77.84
+        "pct": 77.72
       },
       {
         "name": "Казахстан",
-        "pct": 7.03
+        "pct": 7.07
       },
       {
         "name": "Украина",
-        "pct": 2.7
+        "pct": 2.72
       },
       {
         "name": "Беларусь",
-        "pct": 2.7
+        "pct": 2.72
       },
       {
         "name": "Германия",
-        "pct": 1.08
+        "pct": 1.09
       }
     ],
     "cities": [
       {
         "name": "Москва",
-        "pct": 25.41
-      },
-      {
-        "name": "Ростов-на-Дону",
-        "pct": 3.24
+        "pct": 26.09
       },
       {
         "name": "Химки, Московская область",
-        "pct": 3.24
+        "pct": 3.8
+      },
+      {
+        "name": "Ростов-на-Дону",
+        "pct": 3.26
       },
       {
         "name": "Санкт-Петербург",
-        "pct": 2.7
+        "pct": 2.72
       },
       {
         "name": "Алма-Ата",
-        "pct": 2.7
+        "pct": 2.72
       }
     ],
     "age": [
       {
         "name": "13 – 17",
-        "pct": 0.54
+        "pct": 0.55
       },
       {
         "name": "18 – 24",
-        "pct": 11.41
+        "pct": 11.48
       },
       {
         "name": "25 – 34",
-        "pct": 41.3
+        "pct": 40.98
       },
       {
         "name": "35 – 44",
-        "pct": 37.5
+        "pct": 37.7
       },
       {
         "name": "45 – 54",
-        "pct": 4.35
+        "pct": 4.37
       },
       {
         "name": "55 – 64",
-        "pct": 3.26
+        "pct": 3.28
       },
       {
         "name": "65+",
-        "pct": 1.63
+        "pct": 1.64
       }
     ],
     "gender": [
       {
         "name": "Женский",
-        "pct": 61.96
+        "pct": 61.75
       },
       {
         "name": "Мужской",
-        "pct": 17.39
+        "pct": 17.49
       },
       {
         "name": "Другое",
-        "pct": 20.65
+        "pct": 20.77
       }
     ]
   },
   "interests": [
     {
       "name": "Путешествия",
-      "n": 262
+      "n": 263
     },
     {
       "name": "Photographers of Threads",
-      "n": 218
+      "n": 220
     },
     {
       "name": "Dating Threads",
-      "n": 186
+      "n": 188
     },
     {
       "name": "Фотография",
@@ -208,7 +213,7 @@
     },
     {
       "name": "Travel Threads",
-      "n": 148
+      "n": 150
     }
   ],
   "peak": [
@@ -218,20 +223,20 @@
       "viewers": 5505
     },
     {
+      "day": "Sunday",
+      "time": "9 AM - 12 PM",
+      "viewers": 5435
+    },
+    {
       "day": "Saturday",
       "time": "9 AM - 12 PM",
       "viewers": 4886
-    },
-    {
-      "day": "Thursday",
-      "time": "9 AM - 12 PM",
-      "viewers": 4773
     }
   ],
   "change": {
-    "views": 64436.4,
-    "viewers": 69212,
-    "followers_net": 112.6,
+    "views": 67609.5,
+    "viewers": 75269.6,
+    "followers_net": 111.5,
     "interactions": 0
   }
 }
