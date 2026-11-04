@@ -1,8 +1,8 @@
 {
-  "checked_at": "2026-11-03T07:13:31.368Z",
+  "checked_at": "2026-11-04T07:12:43.316Z",
   "period": "Последние 30 дней",
-  "views": 28438,
-  "viewers": 17335,
+  "views": 28517,
+  "viewers": 17355,
   "followers_net": 97,
   "interactions": 550,
   "links": [
@@ -12,95 +12,95 @@
     }
   ],
   "viewers_followers": 95,
-  "viewers_nonfollowers": 17240,
+  "viewers_nonfollowers": 17260,
   "followers": 184,
   "viewers_demo": {
     "countries": [
       {
         "name": "Россия",
-        "pct": 78.27
+        "pct": 78
       },
       {
         "name": "Беларусь",
-        "pct": 10.55
+        "pct": 11
       },
       {
         "name": "Казахстан",
-        "pct": 4.12
+        "pct": 4
       },
       {
         "name": "Украина",
-        "pct": 1.14
+        "pct": 1
       },
       {
         "name": "Кыргызстан",
-        "pct": 0.69
+        "pct": 1
       }
     ],
     "cities": [
       {
         "name": "Москва",
-        "pct": 29.85
+        "pct": 30
       },
       {
         "name": "Минск",
-        "pct": 5.23
+        "pct": 5
       },
       {
         "name": "Санкт-Петербург",
-        "pct": 3.99
+        "pct": 4
       },
       {
         "name": "Химки, Московская область",
-        "pct": 3.85
+        "pct": 4
       },
       {
         "name": "Новая Усмань",
-        "pct": 2.15
+        "pct": 2
       }
     ],
     "age": [
       {
         "name": "13 – 17",
-        "pct": 0.06
+        "pct": 0
       },
       {
         "name": "18 – 24",
-        "pct": 11.66
+        "pct": 12
       },
       {
         "name": "25 – 34",
-        "pct": 45.25
+        "pct": 45
       },
       {
         "name": "35 – 44",
-        "pct": 30.27
+        "pct": 30
       },
       {
         "name": "45 – 54",
-        "pct": 9.26
+        "pct": 9
       },
       {
         "name": "55 – 64",
-        "pct": 2.59
+        "pct": 3
       },
       {
         "name": "65+",
-        "pct": 0.91
+        "pct": 1
       }
     ],
     "gender": [
       {
         "name": "Женский",
-        "pct": 55.57
+        "pct": 56
       },
       {
         "name": "Мужской",
-        "pct": 25.79
+        "pct": 26
       },
       {
         "name": "Другое",
-        "pct": 18.64
+        "pct": 19
       }
     ]
   },
@@ -108,112 +108,112 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 77.72
+        "pct": 78
       },
       {
         "name": "Казахстан",
-        "pct": 7.07
+        "pct": 7
       },
       {
         "name": "Украина",
-        "pct": 2.72
+        "pct": 3
       },
       {
         "name": "Беларусь",
-        "pct": 2.72
+        "pct": 3
       },
       {
         "name": "Германия",
-        "pct": 1.09
+        "pct": 1
       }
     ],
     "cities": [
       {
         "name": "Москва",
-        "pct": 26.09
+        "pct": 27
       },
       {
         "name": "Химки, Московская область",
-        "pct": 3.8
-      },
-      {
-        "name": "Ростов-на-Дону",
-        "pct": 3.26
+        "pct": 4
       },
       {
         "name": "Санкт-Петербург",
-        "pct": 2.72
+        "pct": 3
+      },
+      {
+        "name": "Ростов-на-Дону",
+        "pct": 3
       },
       {
         "name": "Алма-Ата",
-        "pct": 2.72
+        "pct": 3
       }
     ],
     "age": [
       {
         "name": "13 – 17",
-        "pct": 0.55
+        "pct": 1
       },
       {
         "name": "18 – 24",
-        "pct": 11.48
+        "pct": 11
       },
       {
         "name": "25 – 34",
-        "pct": 40.98
+        "pct": 41
       },
       {
         "name": "35 – 44",
-        "pct": 37.7
+        "pct": 38
       },
       {
         "name": "45 – 54",
-        "pct": 4.37
+        "pct": 4
       },
       {
         "name": "55 – 64",
-        "pct": 3.28
+        "pct": 3
       },
       {
         "name": "65+",
-        "pct": 1.64
+        "pct": 2
       }
     ],
     "gender": [
       {
         "name": "Женский",
-        "pct": 61.75
+        "pct": 62
       },
       {
         "name": "Мужской",
-        "pct": 17.49
+        "pct": 17
       },
       {
         "name": "Другое",
-        "pct": 20.77
+        "pct": 21
       }
     ]
   },
   "interests": [
     {
       "name": "Путешествия",
-      "n": 263
+      "n": 264
     },
     {
       "name": "Photographers of Threads",
-      "n": 220
+      "n": 219
     },
     {
       "name": "Dating Threads",
-      "n": 188
+      "n": 189
     },
     {
       "name": "Фотография",
-      "n": 160
+      "n": 159
     },
     {
       "name": "Travel Threads",
-      "n": 150
+      "n": 152
     }
   ],
   "peak": [
@@ -228,15 +228,15 @@
       "viewers": 5435
     },
     {
-      "day": "Saturday",
-      "time": "9 AM - 12 PM",
-      "viewers": 4886
+      "day": "Monday",
+      "time": "9 PM - 12 AM",
+      "viewers": 5202
     }
   ],
   "change": {
-    "views": 67609.5,
-    "viewers": 75269.6,
-    "followers_net": 111.5,
+    "views": 71193,
+    "viewers": 82543,
+    "followers_net": 111,
     "interactions": 0
   }
 }
