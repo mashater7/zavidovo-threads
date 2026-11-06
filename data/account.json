@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-11-05T07:13:05.740Z",
+  "checked_at": "2026-11-06T07:13:22.289Z",
   "period": "Последние 30 дней",
-  "views": 28587,
+  "views": 28675,
   "viewers": 17355,
-  "followers_net": 97,
+  "followers_net": 98,
   "interactions": 552,
   "links": [
     {
@@ -11,8 +11,8 @@
       "clicks": 103
     }
   ],
-  "viewers_followers": 95,
-  "viewers_nonfollowers": 17260,
+  "viewers_followers": 96,
+  "viewers_nonfollowers": 17259,
   "followers": 184,
   "viewers_demo": {
     "countries": [
@@ -108,7 +108,7 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 78
+        "pct": 79
       },
       {
         "name": "Казахстан",
@@ -130,22 +130,22 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 26
+        "pct": 25
       },
       {
         "name": "Химки, Московская область",
-        "pct": 5
+        "pct": 4
       },
       {
-        "name": "Ростов-на-Дону",
-        "pct": 3
-      },
-      {
-        "name": "Санкт-Петербург",
+        "name": "г. Нижнекамск, респ. Татарстан",
         "pct": 3
       },
       {
         "name": "Алма-Ата",
+        "pct": 3
+      },
+      {
+        "name": "Ростов-на-Дону",
         "pct": 3
       }
     ],
@@ -205,7 +205,7 @@
     },
     {
       "name": "Dating Threads",
-      "n": 192
+      "n": 193
     },
     {
       "name": "Фотография",
@@ -213,7 +213,7 @@
     },
     {
       "name": "Travel Threads",
-      "n": 153
+      "n": 156
     }
   ],
   "peak": [
@@ -234,9 +234,9 @@
     }
   ],
   "change": {
-    "views": 71368,
+    "views": 73426,
     "viewers": 82543,
-    "followers_net": 111,
+    "followers_net": 114,
     "interactions": 0
   }
 }
