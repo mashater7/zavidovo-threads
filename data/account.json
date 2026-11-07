@@ -1,19 +1,19 @@
 {
-  "checked_at": "2026-11-06T07:13:22.289Z",
+  "checked_at": "2026-11-07T07:13:53.044Z",
   "period": "Последние 30 дней",
-  "views": 28675,
+  "views": 28687,
   "viewers": 17355,
-  "followers_net": 98,
+  "followers_net": 97,
   "interactions": 552,
   "links": [
     {
       "title": "Забронировать домик",
-      "clicks": 103
+      "clicks": 107
     }
   ],
   "viewers_followers": 96,
   "viewers_nonfollowers": 17259,
-  "followers": 184,
+  "followers": 183,
   "viewers_demo": {
     "countries": [
       {
@@ -130,7 +130,7 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 25
+        "pct": 22
       },
       {
         "name": "Химки, Московская область",
@@ -138,14 +138,14 @@
       },
       {
         "name": "г. Нижнекамск, респ. Татарстан",
-        "pct": 3
+        "pct": 4
       },
       {
         "name": "Алма-Ата",
         "pct": 3
       },
       {
-        "name": "Ростов-на-Дону",
+        "name": "Новая Усмань",
         "pct": 3
       }
     ],
@@ -156,7 +156,7 @@
       },
       {
         "name": "18 – 24",
-        "pct": 11
+        "pct": 12
       },
       {
         "name": "25 – 34",
@@ -164,7 +164,7 @@
       },
       {
         "name": "35 – 44",
-        "pct": 38
+        "pct": 37
       },
       {
         "name": "45 – 54",
@@ -205,7 +205,7 @@
     },
     {
       "name": "Dating Threads",
-      "n": 193
+      "n": 195
     },
     {
       "name": "Фотография",
@@ -213,7 +213,7 @@
     },
     {
       "name": "Travel Threads",
-      "n": 156
+      "n": 157
     }
   ],
   "peak": [
@@ -228,15 +228,15 @@
       "viewers": 5435
     },
     {
-      "day": "Monday",
-      "time": "9 PM - 12 AM",
-      "viewers": 5202
+      "day": "Thursday",
+      "time": "9 AM - 12 PM",
+      "viewers": 5325
     }
   ],
   "change": {
-    "views": 73426,
-    "viewers": 82543,
-    "followers_net": 114,
+    "views": 71618,
+    "viewers": 78786,
+    "followers_net": 113,
     "interactions": 0
   }
 }
