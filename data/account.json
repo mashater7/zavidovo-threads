@@ -1,8 +1,8 @@
 {
-  "checked_at": "2026-11-07T07:13:53.044Z",
+  "checked_at": "2026-11-08T07:13:26.244Z",
   "period": "Последние 30 дней",
-  "views": 28687,
-  "viewers": 17355,
+  "views": 28699,
+  "viewers": 17403,
   "followers_net": 97,
   "interactions": 552,
   "links": [
@@ -11,8 +11,8 @@
       "clicks": 107
     }
   ],
-  "viewers_followers": 96,
-  "viewers_nonfollowers": 17259,
+  "viewers_followers": 97,
+  "viewers_nonfollowers": 17306,
   "followers": 183,
   "viewers_demo": {
     "countries": [
@@ -40,23 +40,23 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 30
+        "pct": 29
       },
       {
         "name": "Минск",
         "pct": 5
       },
       {
-        "name": "Химки, Московская область",
-        "pct": 4
-      },
-      {
         "name": "Санкт-Петербург",
         "pct": 4
       },
       {
-        "name": "Новая Усмань",
-        "pct": 2
+        "name": "г. Нижнекамск, респ. Татарстан",
+        "pct": 4
+      },
+      {
+        "name": "Химки, Московская область",
+        "pct": 4
       }
     ],
     "age": [
@@ -108,7 +108,7 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 79
+        "pct": 78
       },
       {
         "name": "Казахстан",
@@ -130,14 +130,14 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 22
-      },
-      {
-        "name": "Химки, Московская область",
-        "pct": 4
+        "pct": 23
       },
       {
         "name": "г. Нижнекамск, респ. Татарстан",
+        "pct": 6
+      },
+      {
+        "name": "Химки, Московская область",
         "pct": 4
       },
       {
@@ -145,7 +145,7 @@
         "pct": 3
       },
       {
-        "name": "Новая Усмань",
+        "name": "Санкт-Петербург",
         "pct": 3
       }
     ],
@@ -205,7 +205,7 @@
     },
     {
       "name": "Dating Threads",
-      "n": 195
+      "n": 194
     },
     {
       "name": "Фотография",
@@ -213,14 +213,14 @@
     },
     {
       "name": "Travel Threads",
-      "n": 157
+      "n": 158
     }
   ],
   "peak": [
     {
       "day": "Friday",
       "time": "12 PM - 3 PM",
-      "viewers": 5505
+      "viewers": 5832
     },
     {
       "day": "Sunday",
@@ -234,8 +234,8 @@
     }
   ],
   "change": {
-    "views": 71618,
-    "viewers": 78786,
+    "views": 68231,
+    "viewers": 79005,
     "followers_net": 113,
     "interactions": 0
   }
