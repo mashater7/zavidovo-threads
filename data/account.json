@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-11-08T07:13:26.244Z",
+  "checked_at": "2026-11-09T07:13:39.404Z",
   "period": "Последние 30 дней",
-  "views": 28699,
+  "views": 28714,
   "viewers": 17403,
-  "followers_net": 97,
+  "followers_net": 98,
   "interactions": 552,
   "links": [
     {
@@ -13,7 +13,7 @@
   ],
   "viewers_followers": 97,
   "viewers_nonfollowers": 17306,
-  "followers": 183,
+  "followers": 184,
   "viewers_demo": {
     "countries": [
       {
@@ -108,7 +108,7 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 78
+        "pct": 79
       },
       {
         "name": "Казахстан",
@@ -130,22 +130,22 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 23
+        "pct": 24
       },
       {
         "name": "г. Нижнекамск, респ. Татарстан",
-        "pct": 6
+        "pct": 7
       },
       {
         "name": "Химки, Московская область",
-        "pct": 4
+        "pct": 3
       },
       {
         "name": "Алма-Ата",
         "pct": 3
       },
       {
-        "name": "Санкт-Петербург",
+        "name": "Новая Усмань",
         "pct": 3
       }
     ],
@@ -156,7 +156,7 @@
       },
       {
         "name": "18 – 24",
-        "pct": 12
+        "pct": 11
       },
       {
         "name": "25 – 34",
@@ -168,7 +168,7 @@
       },
       {
         "name": "45 – 54",
-        "pct": 4
+        "pct": 5
       },
       {
         "name": "55 – 64",
@@ -197,7 +197,7 @@
   "interests": [
     {
       "name": "Путешествия",
-      "n": 263
+      "n": 265
     },
     {
       "name": "Photographers of Threads",
@@ -205,15 +205,15 @@
     },
     {
       "name": "Dating Threads",
-      "n": 194
+      "n": 196
     },
     {
       "name": "Фотография",
-      "n": 160
+      "n": 161
     },
     {
       "name": "Travel Threads",
-      "n": 158
+      "n": 159
     }
   ],
   "peak": [
@@ -234,9 +234,9 @@
     }
   ],
   "change": {
-    "views": 68231,
-    "viewers": 79005,
-    "followers_net": 113,
+    "views": 68267,
+    "viewers": 82771,
+    "followers_net": 114,
     "interactions": 0
   }
 }
