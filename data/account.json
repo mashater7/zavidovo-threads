@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-11-09T07:13:39.404Z",
+  "checked_at": "2026-11-10T07:12:35.723Z",
   "period": "Последние 30 дней",
-  "views": 28714,
+  "views": 28739,
   "viewers": 17403,
   "followers_net": 98,
   "interactions": 552,
@@ -130,22 +130,22 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 24
+        "pct": 22
       },
       {
         "name": "г. Нижнекамск, респ. Татарстан",
-        "pct": 7
+        "pct": 9
       },
       {
         "name": "Химки, Московская область",
         "pct": 3
       },
       {
-        "name": "Алма-Ата",
+        "name": "Новая Усмань",
         "pct": 3
       },
       {
-        "name": "Новая Усмань",
+        "name": "Санкт-Петербург",
         "pct": 3
       }
     ],
@@ -197,7 +197,7 @@
   "interests": [
     {
       "name": "Путешествия",
-      "n": 265
+      "n": 266
     },
     {
       "name": "Photographers of Threads",
@@ -205,15 +205,15 @@
     },
     {
       "name": "Dating Threads",
-      "n": 196
+      "n": 197
     },
     {
       "name": "Фотография",
-      "n": 161
+      "n": 162
     },
     {
       "name": "Travel Threads",
-      "n": 159
+      "n": 162
     }
   ],
   "peak": [
@@ -225,7 +225,7 @@
     {
       "day": "Sunday",
       "time": "9 AM - 12 PM",
-      "viewers": 5435
+      "viewers": 5782
     },
     {
       "day": "Thursday",
@@ -234,7 +234,7 @@
     }
   ],
   "change": {
-    "views": 68267,
+    "views": 69995,
     "viewers": 82771,
     "followers_net": 114,
     "interactions": 0
