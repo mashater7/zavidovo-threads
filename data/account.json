@@ -1,18 +1,13 @@
 {
-  "checked_at": "2026-11-13T07:13:59.063Z",
+  "checked_at": "2026-11-14T07:14:13.807Z",
   "period": "Последние 30 дней",
-  "views": 28744,
-  "viewers": 17403,
-  "followers_net": 97,
-  "interactions": 552,
-  "links": [
-    {
-      "title": "Забронировать домик",
-      "clicks": 107
-    }
-  ],
-  "viewers_followers": 97,
-  "viewers_nonfollowers": 17306,
+  "views": 28538,
+  "viewers": 17242,
+  "followers_net": 76,
+  "interactions": 549,
+  "links": [],
+  "viewers_followers": 96,
+  "viewers_nonfollowers": 17146,
   "followers": 183,
   "viewers_demo": {
     "countries": [
@@ -130,22 +125,22 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 22
+        "pct": 23
       },
       {
         "name": "г. Нижнекамск, респ. Татарстан",
-        "pct": 9
+        "pct": 8
       },
       {
         "name": "Химки, Московская область",
-        "pct": 4
-      },
-      {
-        "name": "Новая Усмань",
-        "pct": 3
+        "pct": 5
       },
       {
         "name": "Санкт-Петербург",
+        "pct": 3
+      },
+      {
+        "name": "Новая Усмань",
         "pct": 3
       }
     ],
@@ -197,7 +192,7 @@
   "interests": [
     {
       "name": "Путешествия",
-      "n": 267
+      "n": 265
     },
     {
       "name": "Photographers of Threads",
@@ -209,23 +204,23 @@
     },
     {
       "name": "Фотография",
-      "n": 164
-    },
-    {
-      "name": "Travel Threads",
       "n": 163
     },
     {
-      "name": "Психология",
-      "n": 150
+      "name": "Travel Threads",
+      "n": 160
     },
     {
-      "name": "фотограф",
+      "name": "Психология",
       "n": 146
     },
     {
+      "name": "фотограф",
+      "n": 145
+    },
+    {
       "name": "спорт",
-      "n": 137
+      "n": 135
     },
     {
       "name": "AI Threads",
@@ -233,7 +228,7 @@
     },
     {
       "name": "Business Threads",
-      "n": 127
+      "n": 128
     },
     {
       "name": "бизнес",
@@ -241,7 +236,7 @@
     },
     {
       "name": "маркетинг",
-      "n": 84
+      "n": 85
     },
     {
       "name": "недвижимость",
@@ -249,7 +244,7 @@
     },
     {
       "name": "Отношения",
-      "n": 60
+      "n": 58
     }
   ],
   "peak": [
@@ -270,9 +265,9 @@
     }
   ],
   "change": {
-    "views": 11398,
-    "viewers": 8734,
-    "followers_net": 113,
-    "interactions": 18300
+    "views": 122,
+    "viewers": 120,
+    "followers_net": 71,
+    "interactions": 68
   }
 }
