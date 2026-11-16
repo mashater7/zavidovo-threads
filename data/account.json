@@ -1,57 +1,62 @@
 {
-  "checked_at": "2026-11-14T07:14:13.807Z",
+  "checked_at": "2026-11-16T07:14:29.815Z",
   "period": "Последние 30 дней",
-  "views": 28538,
-  "viewers": 17242,
+  "views": 15060,
+  "viewers": 9398,
   "followers_net": 76,
-  "interactions": 549,
-  "links": [],
-  "viewers_followers": 96,
-  "viewers_nonfollowers": 17146,
+  "interactions": 205,
+  "links": [
+    {
+      "title": "Забронировать домик",
+      "clicks": 84
+    }
+  ],
+  "viewers_followers": 87,
+  "viewers_nonfollowers": 9311,
   "followers": 183,
   "viewers_demo": {
     "countries": [
       {
         "name": "Россия",
-        "pct": 78
+        "pct": 88
       },
       {
         "name": "Беларусь",
-        "pct": 10
+        "pct": 4
       },
       {
         "name": "Казахстан",
-        "pct": 4
+        "pct": 3
       },
       {
         "name": "Украина",
         "pct": 1
       },
       {
-        "name": "Кыргызстан",
+        "name": "Германия",
         "pct": 1
       }
     ],
     "cities": [
       {
         "name": "Москва",
-        "pct": 29
+        "pct": 38
       },
       {
         "name": "г. Нижнекамск, респ. Татарстан",
         "pct": 6
       },
       {
-        "name": "Минск",
+        "name": "Химки, Московская область",
         "pct": 5
       },
       {
         "name": "Санкт-Петербург",
-        "pct": 4
+        "pct": 2
       },
       {
-        "name": "Химки, Московская область",
-        "pct": 3
+        "name": "Новая Усмань",
+        "pct": 2
       }
     ],
     "age": [
@@ -61,11 +66,11 @@
       },
       {
         "name": "18 – 24",
-        "pct": 11
+        "pct": 12
       },
       {
         "name": "25 – 34",
-        "pct": 45
+        "pct": 47
       },
       {
         "name": "35 – 44",
@@ -77,7 +82,7 @@
       },
       {
         "name": "55 – 64",
-        "pct": 3
+        "pct": 2
       },
       {
         "name": "65+",
@@ -87,15 +92,15 @@
     "gender": [
       {
         "name": "Женский",
-        "pct": 56
+        "pct": 60
       },
       {
         "name": "Мужской",
-        "pct": 26
+        "pct": 23
       },
       {
         "name": "Другое",
-        "pct": 18
+        "pct": 17
       }
     ]
   },
@@ -125,11 +130,11 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 23
+        "pct": 21
       },
       {
         "name": "г. Нижнекамск, респ. Татарстан",
-        "pct": 8
+        "pct": 7
       },
       {
         "name": "Химки, Московская область",
@@ -192,67 +197,58 @@
   "interests": [
     {
       "name": "Путешествия",
-      "n": 265
-    },
-    {
-      "name": "Photographers of Threads",
-      "n": 223
+      "n": 116
     },
     {
       "name": "Dating Threads",
-      "n": 199
-    },
-    {
-      "name": "Фотография",
-      "n": 163
-    },
-    {
-      "name": "Travel Threads",
-      "n": 160
+      "n": 109
     },
     {
       "name": "Психология",
-      "n": 146
-    },
-    {
-      "name": "фотограф",
-      "n": 145
+      "n": 81
     },
     {
       "name": "спорт",
-      "n": 135
+      "n": 71
     },
     {
-      "name": "AI Threads",
-      "n": 132
-    },
-    {
-      "name": "Business Threads",
-      "n": 128
-    },
-    {
-      "name": "бизнес",
-      "n": 126
-    },
-    {
-      "name": "маркетинг",
-      "n": 85
-    },
-    {
-      "name": "недвижимость",
+      "name": "Travel Threads",
       "n": 68
     },
     {
+      "name": "Book Threads",
+      "n": 59
+    },
+    {
+      "name": "Mom Threads",
+      "n": 59
+    },
+    {
+      "name": "бизнес",
+      "n": 52
+    },
+    {
+      "name": "AI Threads",
+      "n": 50
+    },
+    {
+      "name": "маркетинг",
+      "n": 31
+    },
+    {
+      "name": "Фотография",
+      "n": 30
+    },
+    {
       "name": "Отношения",
-      "n": 58
+      "n": 30
+    },
+    {
+      "name": "Москва",
+      "n": 28
     }
   ],
   "peak": [
-    {
-      "day": "Friday",
-      "time": "12 PM - 3 PM",
-      "viewers": 5832
-    },
     {
       "day": "Sunday",
       "time": "9 AM - 12 PM",
@@ -262,12 +258,17 @@
       "day": "Monday",
       "time": "9 PM - 12 AM",
       "viewers": 5636
+    },
+    {
+      "day": "Friday",
+      "time": "12 PM - 3 PM",
+      "viewers": 5626
     }
   ],
   "change": {
-    "views": 122,
-    "viewers": 120,
+    "views": 9,
+    "viewers": 14,
     "followers_net": 71,
-    "interactions": 68
+    "interactions": -41
   }
 }
