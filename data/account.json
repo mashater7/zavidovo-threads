@@ -1,19 +1,19 @@
 {
-  "checked_at": "2026-11-16T07:14:29.815Z",
+  "checked_at": "2026-11-17T07:15:56.920Z",
   "period": "Последние 30 дней",
-  "views": 15060,
-  "viewers": 9398,
+  "views": 15002,
+  "viewers": 9365,
   "followers_net": 76,
   "interactions": 205,
   "links": [
     {
       "title": "Забронировать домик",
-      "clicks": 84
+      "clicks": 86
     }
   ],
   "viewers_followers": 87,
-  "viewers_nonfollowers": 9311,
-  "followers": 183,
+  "viewers_nonfollowers": 9278,
+  "followers": 184,
   "viewers_demo": {
     "countries": [
       {
@@ -123,7 +123,7 @@
         "pct": 3
       },
       {
-        "name": "Германия",
+        "name": "Узбекистан",
         "pct": 1
       }
     ],
@@ -134,7 +134,7 @@
       },
       {
         "name": "г. Нижнекамск, респ. Татарстан",
-        "pct": 7
+        "pct": 6
       },
       {
         "name": "Химки, Московская область",
@@ -209,19 +209,19 @@
     },
     {
       "name": "спорт",
-      "n": 71
+      "n": 72
     },
     {
       "name": "Travel Threads",
-      "n": 68
+      "n": 69
     },
     {
       "name": "Book Threads",
-      "n": 59
+      "n": 62
     },
     {
       "name": "Mom Threads",
-      "n": 59
+      "n": 60
     },
     {
       "name": "бизнес",
@@ -229,7 +229,7 @@
     },
     {
       "name": "AI Threads",
-      "n": 50
+      "n": 49
     },
     {
       "name": "маркетинг",
@@ -241,7 +241,7 @@
     },
     {
       "name": "Отношения",
-      "n": 30
+      "n": 29
     },
     {
       "name": "Москва",
@@ -249,11 +249,6 @@
     }
   ],
   "peak": [
-    {
-      "day": "Sunday",
-      "time": "9 AM - 12 PM",
-      "viewers": 5782
-    },
     {
       "day": "Monday",
       "time": "9 PM - 12 AM",
@@ -263,12 +258,17 @@
       "day": "Friday",
       "time": "12 PM - 3 PM",
       "viewers": 5626
+    },
+    {
+      "day": "Sunday",
+      "time": "9 AM - 12 PM",
+      "viewers": 5606
     }
   ],
   "change": {
-    "views": 9,
-    "viewers": 14,
-    "followers_net": 71,
+    "views": 8,
+    "viewers": 13,
+    "followers_net": 70,
     "interactions": -41
   }
 }
