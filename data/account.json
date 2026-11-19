@@ -1,24 +1,24 @@
 {
-  "checked_at": "2026-11-18T07:13:47.629Z",
+  "checked_at": "2026-11-19T07:14:29.497Z",
   "period": "Последние 30 дней",
-  "views": 14970,
-  "viewers": 9365,
-  "followers_net": 77,
+  "views": 14950,
+  "viewers": 9358,
+  "followers_net": 76,
   "interactions": 205,
   "links": [
     {
       "title": "Забронировать домик",
-      "clicks": 86
+      "clicks": 87
     }
   ],
   "viewers_followers": 87,
-  "viewers_nonfollowers": 9278,
-  "followers": 184,
+  "viewers_nonfollowers": 9271,
+  "followers": 183,
   "viewers_demo": {
     "countries": [
       {
         "name": "Россия",
-        "pct": 88
+        "pct": 90
       },
       {
         "name": "Беларусь",
@@ -26,7 +26,7 @@
       },
       {
         "name": "Казахстан",
-        "pct": 3
+        "pct": 2
       },
       {
         "name": "Украина",
@@ -40,22 +40,22 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 38
-      },
-      {
-        "name": "г. Нижнекамск, респ. Татарстан",
-        "pct": 6
+        "pct": 35
       },
       {
         "name": "Химки, Московская область",
+        "pct": 9
+      },
+      {
+        "name": "г. Новый Уренгой, Ямало-Ненецкий АО",
         "pct": 5
       },
       {
         "name": "Санкт-Петербург",
-        "pct": 2
+        "pct": 3
       },
       {
-        "name": "Новая Усмань",
+        "name": "Минск",
         "pct": 2
       }
     ],
@@ -130,23 +130,23 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 20
-      },
-      {
-        "name": "г. Нижнекамск, респ. Татарстан",
-        "pct": 6
+        "pct": 25
       },
       {
         "name": "Химки, Московская область",
-        "pct": 5
+        "pct": 7
       },
       {
-        "name": "Санкт-Петербург",
-        "pct": 3
+        "name": "г. Новый Уренгой, Ямало-Ненецкий АО",
+        "pct": 2
       },
       {
-        "name": "Новая Усмань",
-        "pct": 3
+        "name": "Балашиха",
+        "pct": 2
+      },
+      {
+        "name": "Алма-Ата",
+        "pct": 2
       }
     ],
     "age": [
@@ -201,11 +201,11 @@
     },
     {
       "name": "Dating Threads",
-      "n": 110
+      "n": 109
     },
     {
       "name": "Психология",
-      "n": 81
+      "n": 80
     },
     {
       "name": "спорт",
@@ -213,14 +213,14 @@
     },
     {
       "name": "Travel Threads",
-      "n": 70
-    },
-    {
-      "name": "Book Threads",
-      "n": 61
+      "n": 71
     },
     {
       "name": "Mom Threads",
+      "n": 61
+    },
+    {
+      "name": "Book Threads",
       "n": 60
     },
     {
@@ -237,11 +237,11 @@
     },
     {
       "name": "Фотография",
-      "n": 30
+      "n": 29
     },
     {
       "name": "Отношения",
-      "n": 29
+      "n": 28
     },
     {
       "name": "Москва",
@@ -260,15 +260,15 @@
       "viewers": 5606
     },
     {
-      "day": "Tuesday",
+      "day": "Monday",
       "time": "9 PM - 12 AM",
-      "viewers": 5527
+      "viewers": 5497
     }
   ],
   "change": {
     "views": 8,
     "viewers": 13,
-    "followers_net": 72,
+    "followers_net": 71,
     "interactions": -41
   }
 }
