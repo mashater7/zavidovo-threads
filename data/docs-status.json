@@ -1,5 +1,5 @@
 {
-  "changed": true,
+  "changed": false,
   "checked": "2026-11-16T14:47:26.709Z",
   "failed": [],
   "since": "2026-11-16",
@@ -7,5 +7,12 @@
     "https://developers.facebook.com/docs/threads/posts",
     "https://developers.facebook.com/docs/threads/reply-management",
     "https://developers.facebook.com/docs/threads/troubleshooting"
-  ]
+  ],
+  "reviewed_at": "2026-11-19T12:05:49.174246+00:00",
+  "reviewed_pages": [
+    "https://developers.facebook.com/docs/threads/posts",
+    "https://developers.facebook.com/docs/threads/reply-management",
+    "https://developers.facebook.com/docs/threads/troubleshooting"
+  ],
+  "review_note": "Owner explicitly approved clearing this documentation gate on 2026-11-19. Rechecked official Meta posts, reply management, troubleshooting: text 500; carousel <=20; JPEG/PNG <=8MB; recipient controls and approvals; verify published reply and photos. Existing pult limits and protections retained. No new API access."
 }
