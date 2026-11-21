@@ -1,19 +1,19 @@
 {
-  "checked_at": "2026-11-20T07:14:35.549Z",
+  "checked_at": "2026-11-21T07:16:00.814Z",
   "period": "Последние 30 дней",
-  "views": 15044,
-  "viewers": 9361,
-  "followers_net": 76,
-  "interactions": 207,
+  "views": 15150,
+  "viewers": 9403,
+  "followers_net": 77,
+  "interactions": 209,
   "links": [
     {
       "title": "Забронировать домик",
-      "clicks": 87
+      "clicks": 90
     }
   ],
-  "viewers_followers": 90,
-  "viewers_nonfollowers": 9271,
-  "followers": 183,
+  "viewers_followers": 91,
+  "viewers_nonfollowers": 9312,
+  "followers": 184,
   "viewers_demo": {
     "countries": [
       {
@@ -108,40 +108,40 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 79
+        "pct": 80
       },
       {
         "name": "Казахстан",
         "pct": 7
       },
       {
-        "name": "Беларусь",
-        "pct": 3
-      },
-      {
         "name": "Украина",
         "pct": 3
       },
       {
-        "name": "Узбекистан",
+        "name": "Беларусь",
+        "pct": 3
+      },
+      {
+        "name": "Германия",
         "pct": 1
       }
     ],
     "cities": [
       {
         "name": "Москва",
-        "pct": 26
+        "pct": 27
       },
       {
         "name": "Химки, Московская область",
-        "pct": 7
-      },
-      {
-        "name": "Алма-Ата",
-        "pct": 3
+        "pct": 5
       },
       {
         "name": "Санкт-Петербург",
+        "pct": 2
+      },
+      {
+        "name": "Новосибирск, Новосибирская обл.",
         "pct": 2
       },
       {
@@ -164,7 +164,7 @@
       },
       {
         "name": "35 – 44",
-        "pct": 37
+        "pct": 36
       },
       {
         "name": "45 – 54",
@@ -201,11 +201,11 @@
     },
     {
       "name": "Dating Threads",
-      "n": 109
+      "n": 108
     },
     {
       "name": "Психология",
-      "n": 79
+      "n": 78
     },
     {
       "name": "спорт",
@@ -216,11 +216,11 @@
       "n": 71
     },
     {
-      "name": "Book Threads",
-      "n": 61
+      "name": "Mom Threads",
+      "n": 62
     },
     {
-      "name": "Mom Threads",
+      "name": "Book Threads",
       "n": 61
     },
     {
@@ -229,11 +229,11 @@
     },
     {
       "name": "AI Threads",
-      "n": 48
+      "n": 49
     },
     {
       "name": "маркетинг",
-      "n": 32
+      "n": 33
     },
     {
       "name": "Фотография",
@@ -266,9 +266,9 @@
     }
   ],
   "change": {
-    "views": 8,
-    "viewers": 13,
-    "followers_net": 71,
-    "interactions": -40
+    "views": 7,
+    "viewers": 12,
+    "followers_net": 72,
+    "interactions": -41
   }
 }
