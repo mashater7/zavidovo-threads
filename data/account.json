@@ -1,18 +1,18 @@
 {
-  "checked_at": "2026-11-22T07:15:26.433Z",
+  "checked_at": "2026-11-23T07:20:36.262Z",
   "period": "Последние 30 дней",
-  "views": 15035,
-  "viewers": 9355,
+  "views": 14834,
+  "viewers": 9324,
   "followers_net": 74,
-  "interactions": 201,
+  "interactions": 193,
   "links": [
     {
       "title": "Забронировать домик",
-      "clicks": 87
+      "clicks": 81
     }
   ],
-  "viewers_followers": 89,
-  "viewers_nonfollowers": 9266,
+  "viewers_followers": 88,
+  "viewers_nonfollowers": 9236,
   "followers": 184,
   "viewers_demo": {
     "countries": [
@@ -108,7 +108,7 @@
     "countries": [
       {
         "name": "Россия",
-        "pct": 80
+        "pct": 79
       },
       {
         "name": "Казахстан",
@@ -137,15 +137,15 @@
         "pct": 5
       },
       {
+        "name": "Казань",
+        "pct": 2
+      },
+      {
         "name": "Новосибирск, Новосибирская обл.",
         "pct": 2
       },
       {
         "name": "Алма-Ата",
-        "pct": 2
-      },
-      {
-        "name": "Балашиха",
         "pct": 2
       }
     ],
@@ -197,35 +197,35 @@
   "interests": [
     {
       "name": "Путешествия",
-      "n": 111
+      "n": 110
     },
     {
       "name": "Dating Threads",
-      "n": 108
+      "n": 105
+    },
+    {
+      "name": "Психология",
+      "n": 73
     },
     {
       "name": "спорт",
       "n": 72
     },
     {
-      "name": "Психология",
-      "n": 72
-    },
-    {
       "name": "Travel Threads",
-      "n": 69
-    },
-    {
-      "name": "Mom Threads",
-      "n": 61
+      "n": 67
     },
     {
       "name": "Book Threads",
+      "n": 62
+    },
+    {
+      "name": "Mom Threads",
       "n": 58
     },
     {
       "name": "AI Threads",
-      "n": 49
+      "n": 50
     },
     {
       "name": "бизнес",
@@ -241,11 +241,11 @@
     },
     {
       "name": "Москва",
-      "n": 28
+      "n": 29
     },
     {
-      "name": "Отношения",
-      "n": 27
+      "name": "Книги",
+      "n": 28
     }
   ],
   "peak": [
@@ -266,9 +266,9 @@
     }
   ],
   "change": {
-    "views": 4,
-    "viewers": 10,
+    "views": 2,
+    "viewers": 9,
     "followers_net": 67,
-    "interactions": -45
+    "interactions": -48
   }
 }
