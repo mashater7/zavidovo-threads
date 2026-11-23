@@ -1,12 +1,10 @@
 {
-  "changed": false,
-  "checked": "2026-11-16T14:47:26.709Z",
+  "changed": true,
+  "checked": "2026-11-23T17:23:54.171Z",
   "failed": [],
-  "since": "2026-11-16",
+  "since": "2026-11-23",
   "pages": [
-    "https://developers.facebook.com/docs/threads/posts",
-    "https://developers.facebook.com/docs/threads/reply-management",
-    "https://developers.facebook.com/docs/threads/troubleshooting"
+    "https://developers.facebook.com/docs/threads/posts"
   ],
   "reviewed_at": "2026-11-19T12:05:49.174246+00:00",
   "reviewed_pages": [
