@@ -1,45 +1,50 @@
 {
-  "checked_at": "2026-11-25T07:20:01.033Z",
+  "checked_at": "2026-11-26T07:13:40.966Z",
   "period": "Последние 30 дней",
-  "views": 13873,
-  "viewers": 8617,
-  "followers_net": 75,
+  "views": 13835,
+  "viewers": 8603,
+  "followers_net": 77,
   "interactions": 184,
-  "links": [],
-  "viewers_followers": 87,
-  "viewers_nonfollowers": 8530,
-  "followers": 185,
+  "links": [
+    {
+      "title": "Забронировать домик",
+      "clicks": 82
+    }
+  ],
+  "viewers_followers": 86,
+  "viewers_nonfollowers": 8517,
+  "followers": 186,
   "viewers_demo": {
     "countries": [
       {
         "name": "Россия",
-        "pct": 89
+        "pct": 94
       },
       {
         "name": "Беларусь",
-        "pct": 4
-      },
-      {
-        "name": "Казахстан",
         "pct": 2
       },
       {
-        "name": "Украина",
+        "name": "Германия",
         "pct": 1
       },
       {
-        "name": "Германия",
+        "name": "Казахстан",
+        "pct": 1
+      },
+      {
+        "name": "Нидерланды",
         "pct": 1
       }
     ],
     "cities": [
       {
         "name": "Москва",
-        "pct": 36
+        "pct": 38
       },
       {
         "name": "Химки, Московская область",
-        "pct": 9
+        "pct": 10
       },
       {
         "name": "г. Новый Уренгой, Ямало-Ненецкий АО",
@@ -47,10 +52,10 @@
       },
       {
         "name": "Санкт-Петербург",
-        "pct": 3
+        "pct": 2
       },
       {
-        "name": "Минск",
+        "name": "Балашиха",
         "pct": 2
       }
     ],
@@ -65,7 +70,7 @@
       },
       {
         "name": "25 – 34",
-        "pct": 47
+        "pct": 48
       },
       {
         "name": "35 – 44",
@@ -73,7 +78,7 @@
       },
       {
         "name": "45 – 54",
-        "pct": 9
+        "pct": 8
       },
       {
         "name": "55 – 64",
@@ -87,15 +92,15 @@
     "gender": [
       {
         "name": "Женский",
-        "pct": 60
+        "pct": 62
       },
       {
         "name": "Мужской",
-        "pct": 23
+        "pct": 21
       },
       {
         "name": "Другое",
-        "pct": 17
+        "pct": 16
       }
     ]
   },
@@ -129,14 +134,14 @@
       },
       {
         "name": "Химки, Московская область",
-        "pct": 5
-      },
-      {
-        "name": "г. Новый Уренгой, Ямало-Ненецкий АО",
-        "pct": 2
+        "pct": 6
       },
       {
         "name": "Балашиха",
+        "pct": 2
+      },
+      {
+        "name": "Новосибирск, Новосибирская обл.",
         "pct": 2
       },
       {
@@ -181,22 +186,22 @@
       },
       {
         "name": "Мужской",
-        "pct": 16
+        "pct": 17
       },
       {
         "name": "Другое",
-        "pct": 21
+        "pct": 20
       }
     ]
   },
   "interests": [
     {
       "name": "Путешествия",
-      "n": 102
+      "n": 101
     },
     {
       "name": "Dating Threads",
-      "n": 97
+      "n": 98
     },
     {
       "name": "спорт",
@@ -208,7 +213,7 @@
     },
     {
       "name": "Travel Threads",
-      "n": 66
+      "n": 65
     },
     {
       "name": "Book Threads",
@@ -224,11 +229,7 @@
     },
     {
       "name": "бизнес",
-      "n": 43
-    },
-    {
-      "name": "маркетинг",
-      "n": 28
+      "n": 42
     },
     {
       "name": "Книги",
@@ -239,8 +240,12 @@
       "n": 28
     },
     {
+      "name": "маркетинг",
+      "n": 27
+    },
+    {
       "name": "Москва",
-      "n": 28
+      "n": 27
     }
   ],
   "peak": [
@@ -250,20 +255,20 @@
       "viewers": 5444
     },
     {
-      "day": "Tuesday",
-      "time": "9 PM - 12 AM",
-      "viewers": 5371
-    },
-    {
       "day": "Sunday",
       "time": "9 AM - 12 PM",
       "viewers": 5224
+    },
+    {
+      "day": "Monday",
+      "time": "9 PM - 12 AM",
+      "viewers": 5179
     }
   ],
   "change": {
-    "views": -11,
-    "viewers": -8,
-    "followers_net": 68,
-    "interactions": -51
+    "views": -12,
+    "viewers": -9,
+    "followers_net": 71,
+    "interactions": -52
   }
 }
