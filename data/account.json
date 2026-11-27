@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-26T07:13:40.966Z",
+  "checked_at": "2026-11-27T07:13:39.655Z",
   "period": "Последние 30 дней",
-  "views": 13835,
-  "viewers": 8603,
-  "followers_net": 77,
-  "interactions": 184,
+  "views": 13758,
+  "viewers": 8606,
+  "followers_net": 78,
+  "interactions": 179,
   "links": [
     {
       "title": "Забронировать домик",
@@ -12,8 +12,8 @@
     }
   ],
   "viewers_followers": 86,
-  "viewers_nonfollowers": 8517,
-  "followers": 186,
+  "viewers_nonfollowers": 8520,
+  "followers": 187,
   "viewers_demo": {
     "countries": [
       {
@@ -197,11 +197,11 @@
   "interests": [
     {
       "name": "Путешествия",
-      "n": 101
+      "n": 100
     },
     {
       "name": "Dating Threads",
-      "n": 98
+      "n": 99
     },
     {
       "name": "спорт",
@@ -212,12 +212,12 @@
       "n": 68
     },
     {
-      "name": "Travel Threads",
+      "name": "Book Threads",
       "n": 65
     },
     {
-      "name": "Book Threads",
-      "n": 63
+      "name": "Travel Threads",
+      "n": 65
     },
     {
       "name": "Mom Threads",
@@ -229,11 +229,11 @@
     },
     {
       "name": "бизнес",
-      "n": 42
+      "n": 43
     },
     {
       "name": "Книги",
-      "n": 28
+      "n": 29
     },
     {
       "name": "Отношения",
@@ -268,7 +268,7 @@
   "change": {
     "views": -12,
     "viewers": -9,
-    "followers_net": 71,
-    "interactions": -52
+    "followers_net": 72,
+    "interactions": -54
   }
 }
