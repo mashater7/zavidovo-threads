@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-27T07:13:39.655Z",
+  "checked_at": "2026-11-28T07:13:08.799Z",
   "period": "Последние 30 дней",
-  "views": 13758,
-  "viewers": 8606,
+  "views": 13756,
+  "viewers": 8597,
   "followers_net": 78,
-  "interactions": 179,
+  "interactions": 178,
   "links": [
     {
       "title": "Забронировать домик",
@@ -12,7 +12,7 @@
     }
   ],
   "viewers_followers": 86,
-  "viewers_nonfollowers": 8520,
+  "viewers_nonfollowers": 8511,
   "followers": 187,
   "viewers_demo": {
     "countries": [
@@ -130,22 +130,22 @@
     "cities": [
       {
         "name": "Москва",
-        "pct": 27
+        "pct": 25
       },
       {
         "name": "Химки, Московская область",
-        "pct": 6
-      },
-      {
-        "name": "Балашиха",
-        "pct": 2
-      },
-      {
-        "name": "Новосибирск, Новосибирская обл.",
-        "pct": 2
+        "pct": 7
       },
       {
         "name": "Санкт-Петербург",
+        "pct": 3
+      },
+      {
+        "name": "Казань",
+        "pct": 2
+      },
+      {
+        "name": "г. Новый Уренгой, Ямало-Ненецкий АО",
         "pct": 2
       }
     ],
@@ -190,7 +190,7 @@
       },
       {
         "name": "Другое",
-        "pct": 20
+        "pct": 21
       }
     ]
   },
@@ -266,7 +266,7 @@
     }
   ],
   "change": {
-    "views": -12,
+    "views": -13,
     "viewers": -9,
     "followers_net": 72,
     "interactions": -54
